@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coucher - Business Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-teal': '#2DD4BF',
+            'brand-purple': '#D8B4FE',
+            'brand-orange': '#F97316',
+            'brand-yellow': '#EAB308',
+          },
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'bounce-slow': 'bounce 3s infinite',
+          },
+          screens: {
+            'xs': '480px',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(to bottom right, rgb(17, 24, 39), rgb(4, 4, 4));
+    }
+    
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-10px);
+    }
+    
+    .hero-grid {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    
+    .text-shadow {
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .glowing-border:hover {
+      box-shadow: 0 0 15px rgba(45, 212, 191, 0.5);
+    }
+    
+    /* Mobile menu animation */
+    .mobile-menu {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: rgba(17, 24, 39, 0.8);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #2DD4BF;
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #20a99a;
+    }
+    
+    /* Image hover effects */
+    .img-hover-scale {
+      overflow: hidden;
+    }
+    
+    .img-hover-scale img {
+      transition: transform 0.75s ease;
+    }
+    
+    .img-hover-scale:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Loading animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    /* Scroll reveal animation */
+    .reveal {
+      position: relative;
+      opacity: 0;
+      transition: all 1s ease;
+    }
+    
+    .reveal.active {
+      opacity: 1;
+    }
+    
+    .reveal.from-bottom {
+      transform: translateY(50px);
+    }
+    
+    .reveal.from-bottom.active {
+      transform: translateY(0);
+    }
+    
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(to right, #2DD4BF, #A5F3FC);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  </style>
+</head>
+<body class="gradient-bg text-white font-inter min-h-screen fade-in">
+  <!-- Header/Navigation -->
+  <header class="container mx-auto px-4 py-6 relative z-50">
+    <nav class="flex justify-between items-center">
+      <div class="flex items-center space-x-1">
+        <span class="text-3xl font-bold text-brand-teal">C</span>
+        <span class="text-xl font-medium tracking-wider">OUCHER</span>
+      </div>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden lg:flex space-x-10">
+        <a href="#" class="hover:text-brand-teal transition-colors duration-300 font-medium tracking-wide relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-teal after:transition-all hover:after:w-full">SERVICES</a>
+        <a href="#" class="hover:text-brand-teal transition-colors duration-300 font-medium tracking-wide relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-teal after:transition-all hover:after:w-full">ABOUT US</a>
+        <a href="#" class="hover:text-brand-teal transition-colors duration-300 font-medium tracking-wide relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-teal after:transition-all hover:after:w-full">CASES</a>
+      </div>
+      
+      <div class="flex items-center space-x-6">
+        <button class="hover:text-brand-teal transition-colors duration-300 font-medium">SIGN UP</button>
+        <div class="w-10 h-10 rounded-full border border-brand-teal flex items-center justify-center hover:bg-brand-teal hover:text-black transition-all duration-300 cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+          </svg>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="lg:hidden flex items-center focus:outline-none" id="mobile-menu-button">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="lg:hidden">
+      <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black/95 backdrop-blur-md z-50 flex flex-col justify-center items-center mobile-menu transform -translate-x-full">
+        <button class="absolute top-6 right-6" id="close-mobile-menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <div class="flex flex-col space-y-8 items-center">
+          <a href="#" class="text-2xl font-medium hover:text-brand-teal transition-colors duration-300">SERVICES</a>
+          <a href="#" class="text-2xl font-medium hover:text-brand-teal transition-colors duration-300">ABOUT US</a>
+          <a href="#" class="text-2xl font-medium hover:text-brand-teal transition-colors duration-300">CASES</a>
+          <a href="#" class="text-2xl font-medium hover:text-brand-teal transition-colors duration-300">SIGN UP</a>
+        </div>
+        <div class="mt-12 flex items-center space-x-6">
+          <a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84 0 0 0 .497-3.753C20.18 7.773 21.692 5.25 22 4.01z"/>
+            </svg>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M16.98 0a6.9 6.9 0 0 1 5.08 1.98A6.94 6.94 0 0 1 24 7.02v9.96c0 2.08-.68 3.87-1.98 5.13A7.14 7.14 0 0 1 16.94 24H7.06a7.06 7.06 0 0 1-5.03-1.89A6.96 6.96 0 0 1 0 16.94V7.02C0 2.8 2.8 0 7.02 0h9.96zm.05 2.23H7.06c-1.45 0-2.7.43-3.53 1.25a4.82 4.82 0 0 0-1.3 3.54v9.92c0 1.5.43 2.7 1.3 3.58a5 5 0 0 0 3.53 1.25h9.88a5 5 0 0 0 3.53-1.25 4.73 4.73 0 0 0 1.4-3.54V7.02a5 5 0 0 0-1.3-3.49 4.82 4.82 0 0 0-3.54-1.3zM12 5.76c3.39 0 6.2 2.8 6.2 6.2a6.2 6.2 0 0 1-12.4 0 6.2 6.2 0 0 1 6.2-6.2zm0 2.22a3.99 3.99 0 0 0-3.97 3.97A3.99 3.99 0 0 0 12 15.92a3.99 3.99 0 0 0 3.97-3.97A3.99 3.99 0 0 0 12 7.98zm6.44-3.77a1.4 1.4 0 1 1 0 2.8 1.4 1.4 0 0 1 0-2.8z"/>
+            </svg>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.408.593 24 1.324 24h11.494v-9.294H9.689v-3.621h3.129V8.41c0-3.099 1.894-4.785 4.659-4.785 1.325 0 2.464.097 2.796.141v3.24h-1.921c-1.5 0-1.792.721-1.792 1.771v2.311h3.584l-.465 3.63H16.56V24h6.115c.733 0 1.325-.592 1.325-1.324V1.324C24 .593 23.408 0 22.676 0"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="container mx-auto px-4 py-12 md:py-16 hero-grid">
+    <div class="flex flex-col lg:flex-row justify-between">
+      <div class="lg:w-1/2 pt-6 md:pt-10 reveal from-bottom">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-8 text-shadow">
+          <span class="inline-block gradient-text">UNLIMITED</span><br>
+          <span class="inline-block">PRETENTIOUS</span><br>
+          <div class="flex items-center my-4">
+            <div class="relative flex -space-x-4">
+              <img src="https://placehold.co/60x60/ff6f00/ffffff/webp?text=1" alt="Team member" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full border-4 border-black z-30 animate-pulse-slow">
+              <img src="https://placehold.co/60x60/ff6f00/ffffff/webp?text=2" alt="Team member" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full border-4 border-black z-20">
+              <img src="https://placehold.co/60x60/ff6f00/ffffff/webp?text=3" alt="Team member" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full border-4 border-black z-10">
+            </div>
+            <span class="ml-4 text-brand-teal">IDEAS</span>
+          </div>
+        </h1>
+        <div class="border-t border-gray-700 my-8"></div>
+        <div class="flex flex-col sm:flex-row justify-between">
+          <div class="font-medium text-brand-teal mb-4 sm:mb-0">OUR SOLUTIONS</div>
+          <div class="text-left sm:text-right max-w-xs">
+            <span class="text-gray-400">WE PROVIDE THE</span><br>
+            <span class="font-bold text-lg">FULL FUNNEL APPROACH</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="lg:w-1/2 mt-16 lg:mt-0 lg:pl-8 reveal from-bottom" style="animation-delay: 0.2s;">
+        <div class="rounded-3xl bg-gradient-to-br from-purple-300 to-purple-400 p-6 sm:p-8 relative shadow-2xl card-hover">
+          <div class="absolute top-4 right-4 flex space-x-1">
+            <div class="w-3 h-3 bg-black rounded-full"></div>
+            <div class="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+          </div>
+          <div class="text-black mb-6 sm:mb-8 mt-4">
+            <div class="font-medium uppercase">Your</div>
+            <div class="font-extrabold text-2xl sm:text-3xl">BUSINESS</div>
+            <div class="font-extrabold text-2xl sm:text-3xl">BOOST</div>
+          </div>
+          <div class="overflow-hidden rounded-xl mb-6 shadow-lg img-hover-scale">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Professional" class="w-full h-48 sm:h-64 object-cover transition-transform duration-700">
+          </div>
+          <div class="mt-6 flex justify-between items-center">
+            <button class="bg-white text-black rounded-full px-4 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base font-medium hover:bg-black hover:text-white transition-colors duration-300">Book Demo Call</button>
+            <div class="bg-black rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shadow-lg hover:bg-brand-teal hover:text-black transition-colors duration-300 cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="container mx-auto px-4 py-16 md:py-20">
+    <div class="flex flex-col md:flex-row items-center mb-12 md:mb-16 reveal from-bottom">
+      <div class="bg-gradient-to-br from-brand-teal to-teal-600 rounded-full w-14 h-14 md:w-16 md:h-16 flex items-center justify-center mr-6 shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <div>
+        <div class="text-gray-400 text-lg">Let's See</div>
+        <div class="font-bold text-2xl text-brand-teal">How We Did It</div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class="bg-gradient-to-br from-brand-orange to-orange-600 rounded-3xl p-6 sm:p-8 relative shadow-xl card-hover reveal from-bottom" style="animation-delay: 0.1s;">
+        <div class="text-white mb-12 sm:mb-16">
+          <div class="font-medium uppercase">Unique</div>
+          <div class="font-bold text-xl sm:text-2xl">BUSINESS SOLUTIONS</div>
+          <div class="mt-4 text-white/80">
+            Tailored strategies to elevate your business above competition
+          </div>
+        </div>
+        <div class="absolute bottom-6 sm:bottom-8 right-6 sm:right-8">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 sm:h-16 sm:w-16" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-gradient-to-br from-gray-200 to-gray-300 rounded-3xl p-6 sm:p-8 relative shadow-xl card-hover reveal from-bottom" style="animation-delay: 0.2s;">
+        <div class="absolute top-4 right-4 flex space-x-1">
+          <div class="w-3 h-3 bg-black rounded-full"></div>
+          <div class="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+        </div>
+        <div class="absolute top-6 sm:top-8 right-6 sm:right-8">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 sm:h-12 sm:w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </div>
+        <div class="text-black mt-24 sm:mt-32">
+          <div class="text-2xl sm:text-3xl font-bold">OUR CASE</div>
+          <div class="text-2xl sm:text-3xl font-bold">STUDIES</div>
+          <div class="mt-4 text-black/70">
+            Real-world success stories from our clients
+          </div>
+        </div>
+        <div class="mt-6">
+          <button class="bg-black text-white px-5 py-2 rounded-full text-sm hover:bg-brand-teal hover:text-black transition-all duration-300">
+            View All Cases
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-gradient-to-br from-brand-yellow to-yellow-600 rounded-3xl p-6 sm:p-8 relative shadow-xl card-hover reveal from-bottom" style="animation-delay: 0.3s;">
+        <div class="text-black mb-10 sm:mb-12">
+          <div class="font-medium uppercase">Successful</div>
+          <div class="font-bold text-xl sm:text-2xl">PROJECTS</div>
+          <div class="mt-4 text-black/80">
+            Delivering results that exceed expectations
+          </div>
+        </div>
+        <div class="mt-12 sm:mt-16">
+          <div class="flex items-baseline">
+            <div class="text-5xl sm:text-7xl font-extrabold">700</div>
+            <div class="text-2xl sm:text-3xl align-top font-bold ml-1">+</div>
+          </div>
+          <div class="text-sm mt-2">successful projects completed</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap gap-3 sm:gap-4 mt-12 sm:mt-16 justify-center reveal from-bottom" style="animation-delay: 0.4s;">
+      <div class="bg-transparent border border-brand-teal rounded-full px-4 sm:px-6 py-2 sm:py-3 cursor-pointer hover:bg-brand-teal hover:text-black transition-colors duration-300 glowing-border text-sm sm:text-base">WEB ANALYTICS</div>
+      <div class="bg-transparent border border-brand-teal rounded-full px-4 sm:px-6 py-2 sm:py-3 cursor-pointer hover:bg-brand-teal hover:text-black transition-colors duration-300 glowing-border text-sm sm:text-base">EMAIL MARKETING</div>
+      <div class="bg-transparent border border-brand-teal rounded-full px-4 sm:px-6 py-2 sm:py-3 cursor-pointer hover:bg-brand-teal hover:text-black transition-colors duration-300 glowing-border text-sm sm:text-base">SEO 2.0</div>
+      <div class="bg-transparent border border-brand-teal rounded-full px-4 sm:px-6 py-2 sm:py-3 cursor-pointer hover:bg-brand-teal hover:text-black transition-colors duration-300 glowing-border text-sm sm:text-base">CONTENT STRATEGY</div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="container mx-auto px-4 py-16 border-t border-gray-800">
+    <div class="text-center mb-12 sm:mb-16 reveal from-bottom">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">What Our Clients Say</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">We've helped hundreds of businesses achieve remarkable growth and success with our tailored solutions</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <!-- Testimonial 1 -->
+      <div class="bg-black/30 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-brand-teal/30 transition-all duration-300 reveal from-bottom" style="animation-delay: 0.1s;">
+        <div class="flex items-center mb-6">
+          <div class="mr-4">
+            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Client" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover border-2 border-brand-teal">
+          </div>
+          <div>
+            <h4 class="font-bold">Sarah Johnson</h4>
+            <p class="text-sm text-gray-400">Marketing Director, TechCorp</p>
+          </div>
+        </div>
+        <p class="text-gray-300 text-sm sm:text-base">"Coucher transformed our digital strategy completely. Their unique approach to web analytics and SEO helped us increase our conversion rate by 150% in just three months."</p>
+        <div class="mt-6 flex">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        </div>
+      </div>
+      
+      <!-- Testimonial 2 -->
+      <div class="bg-black/30 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-brand-teal/30 transition-all duration-300 reveal from-bottom" style="animation-delay: 0.2s;">
+        <div class="flex items-center mb-6">
+          <div class="mr-4">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover border-2 border-brand-teal">
+          </div>
+          <div>
+            <h4 class="font-bold">Michael Chen</h4>
+            <p class="text-sm text-gray-400">CEO, StartupNow</p>
+          </div>
+        </div>
+        <p class="text-gray-300 text-sm sm:text-base">"We were struggling with our email marketing campaigns until we partnered with Coucher. Their team completely revamped our strategy and our open rates increased from 12% to 45% in just weeks."</p>
+        <div class="mt-6 flex">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        </div>
+      </div>
+      
+      <!-- Testimonial 3 -->
+      <div class="bg-black/30 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-brand-teal/30 transition-all duration-300 reveal from-bottom" style="animation-delay: 0.3s;">
+        <div class="flex items-center mb-6">
+          <div class="mr-4">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover border-2 border-brand-teal">
+          </div>
+          <div>
+            <h4 class="font-bold">Olivia Martinez</h4>
+            <p class="text-sm text-gray-400">Digital Manager, GlobalFirm</p>
+          </div>
+        </div>
+        <p class="text-gray-300 text-sm sm:text-base">"The SEO 2.0 implementation from Coucher's team was game-changing. Our organic search rankings improved dramatically, and we've seen a 200% increase in qualified leads from search engines."</p>
+        <div class="mt-6 flex">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-10 sm:mt-12 reveal from-bottom" style="animation-delay: 0.4s;">
+      <button class="bg-brand-teal text-black font-medium px-6 sm:px-8 py-2.5 sm:py-3 rounded-full hover:bg-white transition-colors duration-300 shadow-lg">
+        Read More Success Stories
+      </button>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="container mx-auto px-4 py-16 sm:py-20">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+      <div class="text-center reveal from-bottom" style="animation-delay: 0.1s;">
+        <div class="text-4xl sm:text-5xl font-bold text-brand-teal mb-2">700+</div>
+        <div class="text-gray-400 text-sm sm:text-base">Completed Projects</div>
+      </div>
+      <div class="text-center reveal from-bottom" style="animation-delay: 0.2s;">
+        <div class="text-4xl sm:text-5xl font-bold text-brand-teal mb-2">250+</div>
+        <div class="text-gray-400 text-sm sm:text-base">Happy Clients</div>
+      </div>
+      <div class="text-center reveal from-bottom" style="animation-delay: 0.3s;">
+        <div class="text-4xl sm:text-5xl font-bold text-brand-teal mb-2">15+</div>
+        <div class="text-gray-400 text-sm sm:text-base">Years Experience</div>
+      </div>
+      <div class="text-center reveal from-bottom" style="animation-delay: 0.4s;">
+        <div class="text-4xl sm:text-5xl font-bold text-brand-teal mb-2">24/7</div>
+        <div class="text-gray-400 text-sm sm:text-base">Support Team</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="container mx-auto px-4 py-16 border-t border-gray-800">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div class="reveal from-bottom">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6">Ready to Boost Your Business?</h2>
+        <p class="text-gray-400 mb-8">Schedule a free consultation with our team of experts and discover how Coucher can transform your business strategy.</p>
+        <div class="flex flex-col space-y-4 max-w-md">
+          <div class="flex items-center">
+            <div class="rounded-full bg-brand-teal/20 p-2 mr-4 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="text-sm sm:text-base">Custom-tailored business solutions</div>
+          </div>
+          <div class="flex items-center">
+            <div class="rounded-full bg-brand-teal/20 p-2 mr-4 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="text-sm sm:text-base">Data-driven strategy development</div>
+          </div>
+          <div class="flex items-center">
+            <div class="rounded-full bg-brand-teal/20 p-2 mr-4 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="text-sm sm:text-base">Continuous performance monitoring</div>
+          </div>
+          <div class="flex items-center">
+            <div class="rounded-full bg-brand-teal/20 p-2 mr-4 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="text-sm sm:text-base">Expert team of industry professionals</div>
+          </div>
+        </div>
+        <div class="mt-10">
+          <button class="bg-gradient-to-r from-brand-teal to-teal-600 text-black font-medium px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:from-white hover:to-gray-200 transition-all duration-300 shadow-lg flex items-center text-sm sm:text-base">
+            Book Your Free Consultation
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <div class="bg-black/20 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/5 reveal from-bottom" style="animation-delay: 0.2s;">
+        <h3 class="text-xl sm:text-2xl font-bold mb-6">Contact Us</h3>
+        <form>
+          <div class="mb-6">
+            <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Full Name</label>
+            <input type="text" id="name" class="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent" placeholder="Your name">
+          </div>
+          <div class="mb-6">
+            <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
+            <input type="email" id="email" class="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent" placeholder="you@company.com">
+          </div>
+          <div class="mb-6">
+            <label for="company" class="block text-sm font-medium text-gray-400 mb-2">Company</label>
+            <input type="text" id="company" class="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent" placeholder="Your company">
+          </div>
+          <div class="mb-6">
+            <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Message</label>
+            <textarea id="message" rows="4" class="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent" placeholder="Tell us about your business needs"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-brand-teal text-black font-medium py-3 rounded-lg hover:bg-white transition-colors duration-300">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="container mx-auto px-4 py-16 border-t border-gray-800">
+    <div class="max-w-3xl mx-auto text-center reveal from-bottom">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Stay Updated With Our Newsletter</h2>
+      <p class="text-gray-400 mb-8">Get the latest insights, tips, and news on business growth strategies</p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <input type="email" class="flex-grow bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent" placeholder="Enter your email">
+        <button class="bg-brand-teal text-black font-medium px-8 py-3 rounded-lg hover:bg-white transition-colors duration-300 whitespace-nowrap">
+          Subscribe Now
+        </button>
+      </div>
+      <p class="text-xs text-gray-500 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black/50 border-t border-gray-800 mt-16">
+    <div class="container mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Logo and About -->
+        <div class="col-span-1 lg:col-span-1">
+          <div class="flex items-center space-x-1 mb-6">
+            <span class="text-3xl font-bold text-brand-teal">C</span>
+            <span class="text-xl font-medium tracking-wider">OUCHER</span>
+          </div>
+          <p class="text-gray-400 mb-6 text-sm sm:text-base">Pioneering business solutions tailored to drive growth, innovation, and success for companies of all sizes.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84 0 0 0 .497-3.753C20.18 7.773 21.692 5.25 22 4.01z"/>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M16.98 0a6.9 6.9 0 0 1 5.08 1.98A6.94 6.94 0 0 1 24 7.02v9.96c0 2.08-.68 3.87-1.98 5.13A7.14 7.14 0 0 1 16.94 24H7.06a7.06 7.06 0 0 1-5.03-1.89A6.96 6.96 0 0 1 0 16.94V7.02C0 2.8 2.8 0 7.02 0h9.96zm.05 2.23H7.06c-1.45 0-2.7.43-3.53 1.25a4.82 4.82 0 0 0-1.3 3.54v9.92c0 1.5.43 2.7 1.3 3.58a5 5 0 0 0 3.53 1.25h9.88a5 5 0 0 0 3.53-1.25 4.73 4.73 0 0 0 1.4-3.54V7.02a5 5 0 0 0-1.3-3.49 4.82 4.82 0 0 0-3.54-1.3zM12 5.76c3.39 0 6.2 2.8 6.2 6.2a6.2 6.2 0 0 1-12.4 0 6.2 6.2 0 0 1 6.2-6.2zm0 2.22a3.99 3.99 0 0 0-3.97 3.97A3.99 3.99 0 0 0 12 15.92a3.99 3.99 0 0 0 3.97-3.97A3.99 3.99 0 0 0 12 7.98zm6.44-3.77a1.4 1.4 0 1 1 0 2.8 1.4 1.4 0 0 1 0-2.8z"/>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.408.593 24 1.324 24h11.494v-9.294H9.689v-3.621h3.129V8.41c0-3.099 1.894-4.785 4.659-4.785 1.325 0 2.464.097 2.796.141v3.24h-1.921c-1.5 0-1.792.721-1.792 1.771v2.311h3.584l-.465 3.63H16.56V24h6.115c.733 0 1.325-.592 1.325-1.324V1.324C24 .593 23.408 0 22.676 0"/>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h5 class="text-lg font-bold mb-6">Quick Links</h5>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">Home</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">About Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">Services</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">Cases</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">Testimonials</a></li>
+          </ul>
+        </div>
+        
+        <!-- Services -->
+        <div>
+          <h5 class="text-lg font-bold mb-6">Our Services</h5>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">Web Analytics</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">Email Marketing</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">SEO Optimization</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">Content Strategy</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-brand-teal transition-colors duration-300">Business Consulting</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div>
+          <h5 class="text-lg font-bold mb-6">Contact Us</h5>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal mt-0.5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-400">1234 Business Avenue, Suite 100<br>New York, NY 10001</span>
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal mr-3" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+              </svg>
+              <span class="text-gray-400">+1 (555) 123-4567</span>
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-teal mr-3" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+              </svg>
+              <span class="text-gray-400">info@coucher.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+        <div class="mb-4 md:mb-0">
+          <p class="text-gray-500 text-sm">© 2025 Coucher. All rights reserved.</p>
+          <p class="text-gray-600 text-xs mt-2">Current Date: 2025-02-27 20:51:31 UTC | User: heisssen</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4 md:mt-0">
+          <a href="#" class="text-gray-500 hover:text-brand-teal transition-colors duration-300 text-sm">Privacy Policy</a>
+          <a href="#" class="text-gray-500 hover:text-brand-teal transition-colors duration-300 text-sm">Terms of Service</a>
+          <a href="#" class="text-gray-500 hover:text-brand-teal transition-colors duration-300 text-sm">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <div class="fixed bottom-8 right-8 opacity-0 transition-opacity duration-300" id="back-to-top">
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-black/30 backdrop-blur-sm text-white p-3 rounded-full border border-white/10 shadow-lg hover:bg-brand-teal hover:text-black transition-colors duration-300">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Loading Indicator -->
+  <div id="loading" class="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black z-50 transition-opacity duration-500">
+    <div class="flex flex-col items-center">
+      <div class="text-4xl font-bold text-brand-teal mb-4">C<span class="text-white">OUCHER</span></div>
+      <div class="w-32 h-1 bg-gray-800 rounded-full overflow-hidden">
+        <div class="bg-brand-teal h-full animate-pulse-slow" id="loading-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const closeMenuButton = document.getElementById('close-mobile-menu');
+      
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+        mobileMenu.classList.remove('-translate-x-full');
+      });
+      
+      closeMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        mobileMenu.classList.add('-translate-x-full');
+      });
+      
+      // Back to top button
+      const backToTopButton = document.getElementById('back-to-top');
+      
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.remove('opacity-0');
+          backToTopButton.classList.add('opacity-100');
+        } else {
+          backToTopButton.classList.remove('opacity-100');
+          backToTopButton.classList.add('opacity-0');
+        }
+      });
+      
+      // Loading animation
+      const loading = document.getElementById('loading');
+      const loadingBar = document.getElementById('loading-bar');
+      let width = 0;
+      
+      const interval = setInterval(function() {
+        width += 5;
+        loadingBar.style.width = width + '%';
+        
+        if (width >= 100) {
+          clearInterval(interval);
+          loading.style.opacity = 0;
+          
+          setTimeout(function() {
+            loading.style.display = 'none';
+          }, 500);
+        }
+            }, 60);
+      
+      // Scroll reveal animations
+      function revealOnScroll() {
+        const elements = document.querySelectorAll('.reveal');
+        
+        elements.forEach(element => {
+          const elementTop = element.getBoundingClientRect().top;
+          const elementVisible = 150;
+          
+          if (elementTop < window.innerHeight - elementVisible) {
+            element.classList.add('active');
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', revealOnScroll);
+      
+      // Initial call to reveal elements that are already visible
+      revealOnScroll();
+      
+      // Current date and time display
+      const userInfo = {
+        timestamp: "2025-02-27 20:53:26",
+        login: "heisssen"
+      };
+      
+      // Update any datetime displays
+      const dateTimeElements = document.querySelectorAll('.current-datetime');
+      dateTimeElements.forEach(element => {
+        element.textContent = userInfo.timestamp;
+      });
+      
+      // Update any user login displays
+      const userLoginElements = document.querySelectorAll('.user-login');
+      userLoginElements.forEach(element => {
+        element.textContent = userInfo.login;
+      });
+    });
+  </script>
+</body>
+</html>
