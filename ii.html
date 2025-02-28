@@ -66,177 +66,220 @@
         }
     </script>
     <style>
-        /* Custom Animations */
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(-3deg); }
-            50% { transform: rotate(3deg); }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .animate-bounce-slow { animation: bounce 2s infinite; }
-        .animate-wiggle { animation: wiggle 1s ease-in-out infinite; }
-        .animate-float { animation: float 3s ease-in-out infinite; }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 10px;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #60a5fa;
-            border-radius: 10px;
-            border: 3px solid #f1f5f9;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #3b82f6;
-        }
-        
-        /* Component Classes */
-        .cartoon-btn {
-            @apply bg-blue-500 hover:bg-blue-600 text-white font-nunito font-bold py-3 px-6 rounded-full transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300;
-        }
-        
-        .cartoon-card {
-            @apply bg-white rounded-3xl shadow-lg p-6 border-4 border-gray-200 transform transition-transform duration-300 hover:-translate-y-2;
-        }
-        
-        .cartoon-input {
-            @apply appearance-none border-3 border-gray-300 rounded-2xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all duration-300 font-quicksand;
-        }
-        
-        /* Switch Component */
-        .cartoon-switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-        
-        .cartoon-switch input { 
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .cartoon-slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-            border: 3px solid #ddd;
-        }
-        
-        .cartoon-slider:before {
-            position: absolute;
-            content: "";
-            height: 22px;
-            width: 22px;
-            left: 4px;
-            bottom: 3px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        
-        input:checked + .cartoon-slider {
-            background-color: #60a5fa;
-            border-color: #3b82f6;
-        }
-        
-        input:checked + .cartoon-slider:before {
-            transform: translateX(26px);
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu {
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-        }
-        
-        .mobile-menu.open {
-            transform: translateX(0);
-        }
-        
-        /* Dark Mode Styles */
-        .dark-mode {
-            @apply bg-gray-900;
-        }
-        
-        .dark-mode .cartoon-card {
-            @apply bg-gray-800 border-gray-700 text-white;
-        }
-        
-        .dark-mode .cartoon-input {
-            @apply bg-gray-800 border-gray-700 text-white;
-        }
-        
-        /* Loading Spinner */
-        .cartoon-spinner {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top-color: #3b82f6;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            to {transform: rotate(360deg);}
-        }
-        
-        /* Tooltip */
-        .cartoon-tooltip {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .cartoon-tooltip .tooltip-text {
-            visibility: hidden;
-            width: 120px;
-            background-color: #60a5fa;
-            color: white;
-            text-align: center;
-            border-radius: 16px;
-            padding: 8px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -60px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-family: 'Nunito', sans-serif;
-            font-weight: bold;
-            font-size: 0.875rem;
-            border: 3px solid #3b82f6;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .cartoon-tooltip:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
-        }
+/* styles.css - Custom styles for Cartoon UI Kit */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@400;500;600&family=Poppins:wght@400;500;700&family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&family=Lato:wght@400;700&display=swap');
+
+/* CSS Variables for Customization */
+:root {
+  /* Color Scheme */
+  --primary-color: #3B82F6;
+  --primary-color-hover: #2563EB;
+  --primary-color-light: rgba(59, 130, 246, 0.1);
+  --secondary-color: #8B5CF6;
+  --secondary-color-hover: #7C3AED;
+  --secondary-color-light: rgba(139, 92, 246, 0.1);
+
+  /* Typography */
+  --heading-font: 'Nunito', sans-serif;
+  --body-font: 'Quicksand', sans-serif;
+  --font-size-base: 16px;
+  --font-size-scale: 1;
+
+  /* Borders */
+  --border-radius: 0.75rem;
+  --border-width: 2px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-intensity: var(--shadow-md);
+
+  /* Animation */
+  --animation-speed: 0.3s;
+  --animation-enabled: 1;
+  
+  /* Dark Mode */
+  --bg-color: #ffffff;
+  --text-color: #1F2937;
+  --muted-color: #6B7280;
+  --border-color: #E5E7EB;
+  --card-bg: #ffffff;
+}
+
+/* Dark Mode Variables */
+.dark-mode {
+  --primary-color: #60A5FA;
+  --primary-color-hover: #3B82F6;
+  --primary-color-light: rgba(96, 165, 250, 0.2);
+  --secondary-color: #A78BFA;
+  --secondary-color-hover: #8B5CF6;
+  --secondary-color-light: rgba(167, 139, 250, 0.2);
+  --bg-color: #1F2937;
+  --text-color: #F9FAFB;
+  --muted-color: #D1D5DB;
+  --border-color: #4B5563;
+  --card-bg: #374151;
+}
+
+/* Apply CSS Variables */
+body {
+  font-family: var(--body-font);
+  font-size: calc(var(--font-size-base) * var(--font-size-scale));
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  transition: background-color var(--animation-speed), color var(--animation-speed);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+}
+
+/* Primary Button Styling */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color-hover);
+  border-color: var(--primary-color-hover);
+}
+
+/* Secondary Button Styling */
+.btn-secondary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-color-hover);
+  border-color: var(--secondary-color-hover);
+}
+
+/* Cards Styling */
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  border-width: var(--border-width);
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-intensity);
+  transition: transform calc(var(--animation-speed) * var(--animation-enabled)),
+              box-shadow calc(var(--animation-speed) * var(--animation-enabled));
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Form Elements */
+input, select, textarea {
+  border-radius: var(--border-radius);
+  border-width: var(--border-width);
+  border-color: var(--border-color);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-color-light);
+}
+
+/* Navigation Elements */
+.nav-link {
+  color: var(--text-color);
+  transition: color var(--animation-speed);
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+.nav-link.active {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Toast & Alert Styling */
+.toast, .alert {
+  border-radius: var(--border-radius);
+}
+
+/* Animation Classes */
+.animated {
+  transition-duration: calc(var(--animation-speed) * var(--animation-enabled));
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Customizer Panel Styles */
+#customizer-panel {
+  transition: transform 0.3s ease;
+}
+
+#customizer-panel.open {
+  transform: translateX(0);
+}
+
+.color-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.color-picker::-webkit-color-swatch {
+  border: none;
+  border-radius: 4px;
+}
+
+/* Range Input Styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 8px;
+  border-radius: 4px;
+  background: #E5E7EB;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Customizations for specific components */
+.cartoon-tooltip .tooltip-text {
+  border-radius: var(--border-radius);
+}
+
+.cartoon-spinner {
+  border-top-color: var(--primary-color);
+}
     </style>
 </head>
 <body class="bg-gray-100 font-quicksand">
@@ -2247,6 +2290,63 @@
             </div>
         </section>
         
+		
+		<!-- Example Components for Demo -->
+<div class="container mx-auto px-4 py-8">
+  <h2 class="text-2xl font-bold mb-6">Customization Demo</h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Button Examples -->
+    <div class="card p-6">
+      <h3 class="font-bold mb-4">Custom Buttons</h3>
+      <div class="space-y-4">
+        <button class="preview-button btn-primary w-full text-white font-bold py-2 px-4">
+          Primary Button
+        </button>
+        <button class="preview-button btn-secondary w-full text-white font-bold py-2 px-4">
+          Secondary Button
+        </button>
+        <button class="preview-button border-2 w-full bg-transparent py-2 px-4">
+          Outline Button
+        </button>
+      </div>
+    </div>
+    
+    <!-- Card Examples -->
+    <div class="card p-6">
+      <h3 class="font-bold mb-4">Custom Card</h3>
+      <div class="preview-card p-4 border-2">
+        <h4 class="font-bold mb-2">Card Title</h4>
+        <p class="text-sm mb-3">This card will update styles based on your customization settings.</p>
+        <div class="flex justify-end">
+          <button class="preview-button btn-primary text-white text-sm py-1 px-3">
+            Action
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Form Example -->
+    <div class="card p-6">
+      <h3 class="font-bold mb-4">Custom Form</h3>
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-bold mb-2">Input Field</label>
+          <input type="text" class="w-full py-2 px-3" placeholder="Enter text...">
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Select Field</label>
+          <select class="w-full py-2 px-3">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+		
         <!-- Dark Mode Components -->
         <section id="dark-mode" class="mb-16">
             <h2 class="font-nunito font-bold text-3xl mb-6 text-gray-800">Dark Mode Components</h2>
@@ -2359,223 +2459,186 @@
             </div>
         </section>
         
-        <!-- Customization Section -->
-        <section id="customization" class="mb-16">
-            <h2 class="font-nunito font-bold text-3xl mb-6 text-gray-800">Customization</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <!-- Color Customization -->
-                <div class="bg-white rounded-3xl shadow-lg p-6 border-4 border-gray-200">
-                    <h3 class="font-nunito font-bold text-xl mb-4 text-gray-700">Color Palette</h3>
-                    
-                    <div class="mb-6">
-                        <p class="font-quicksand text-gray-600 mb-4">Choose from our predefined color schemes or create your own.</p>
-                        <div class="grid grid-cols-2 gap-4">
-                            <button class="p-4 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-nunito font-bold shadow-md">
-                                Ocean Theme
-                            </button>
-                            <button class="p-4 rounded-xl bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white font-nunito font-bold shadow-md">
-                                Forest Theme
-                            </button>
-                            <button class="p-4 rounded-xl bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white font-nunito font-bold shadow-md">
-                                Sunset Theme
-                            </button>
-                            <button class="p-4 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-nunito font-bold shadow-md">
-                                Berry Theme
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h4 class="font-nunito font-bold mb-2 text-gray-700">Custom Colors</h4>
-                        <div class="flex flex-wrap gap-3 mb-4">
-                            <div class="w-10 h-10 rounded-full bg-blue-500 cursor-pointer border-2 border-white shadow-md"></div>
-                            <div class="w-10 h-10 rounded-full bg-purple-500 cursor-pointer border-2 border-white shadow-md"></div>
-                            <div class="w-10 h-10 rounded-full bg-green-500 cursor-pointer border-2 border-white shadow-md"></div>
-                            <div class="w-10 h-10 rounded-full bg-yellow-500 cursor-pointer border-2 border-white shadow-md"></div>
-                            <div class="w-10 h-10 rounded-full bg-red-500 cursor-pointer border-2 border-white shadow-md"></div>
-                            <div class="w-10 h-10 rounded-full bg-pink-500 cursor-pointer border-2 border-white shadow-md"></div>
-                            <div class="w-10 h-10 rounded-full bg-gray-800 cursor-pointer border-2 border-white shadow-md"></div>
-                            <div class="w-10 h-10 rounded-full bg-white cursor-pointer border-2 border-gray-300 shadow-md flex items-center justify-center">
-                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Font Customization -->
-                <div class="bg-white rounded-3xl shadow-lg p-6 border-4 border-gray-200">
-                    <h3 class="font-nunito font-bold text-xl mb-4 text-gray-700">Typography</h3>
-                    
-                    <div class="mb-6">
-                        <h4 class="font-nunito font-bold mb-2 text-gray-700">Heading Fonts</h4>
-                        <div class="space-y-2">
-                            <div class="p-3 rounded-lg hover:bg-gray-50 border border-gray-200 cursor-pointer">
-                                <span class="font-nunito font-bold block">Nunito</span>
-                                <div class="h-1 w-full bg-blue-500 rounded-full mt-2"></div>
-                            </div>
-                            <div class="p-3 rounded-lg hover:bg-gray-50 border border-gray-200 cursor-pointer">
-                                <span class="font-sans font-bold block">Sans Serif</span>
-                                <div class="h-1 w-1/4 bg-gray-300 rounded-full mt-2"></div>
-                            </div>
-                            <div class="p-3 rounded-lg hover:bg-gray-50 border border-gray-200 cursor-pointer">
-                                <span class="font-serif font-bold block">Serif</span>
-                                <div class="h-1 w-1/4 bg-gray-300 rounded-full mt-2"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h4 class="font-nunito font-bold mb-2 text-gray-700">Body Fonts</h4>
-                        <div class="space-y-2">
-                            <div class="p-3 rounded-lg hover:bg-gray-50 border border-gray-200 cursor-pointer">
-                                <span class="font-quicksand block">Quicksand</span>
-                                <div class="h-1 w-full bg-blue-500 rounded-full mt-2"></div>
-                            </div>
-                            <div class="p-3 rounded-lg hover:bg-gray-50 border border-gray-200 cursor-pointer">
-                                <span class="font-sans block">Sans Serif</span>
-                                <div class="h-1 w-1/4 bg-gray-300 rounded-full mt-2"></div>
-                            </div>
-                            <div class="p-3 rounded-lg hover:bg-gray-50 border border-gray-200 cursor-pointer">
-                                <span class="font-mono block">Monospace</span>
-                                <div class="h-1 w-1/4 bg-gray-300 rounded-full mt-2"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="bg-white rounded-3xl shadow-lg p-6 border-4 border-gray-200 mb-8">
-                <h3 class="font-nunito font-bold text-xl mb-4 text-gray-700">Shape & Style Customization</h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Border Radius Options -->
-                    <div>
-                        <h4 class="font-nunito font-bold mb-3 text-gray-700">Border Radius</h4>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg border border-gray-200 cursor-pointer">
-                                <div class="w-8 h-8 rounded-sm border-2 border-blue-500"></div>
-                                <span class="font-quicksand text-gray-700">Square</span>
-                            </div>
-                            <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg border border-gray-200 cursor-pointer">
-                                <div class="w-8 h-8 rounded-lg border-2 border-blue-500"></div>
-                                <span class="font-quicksand text-gray-700">Rounded</span>
-                            </div>
-                            <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg border border-gray-200 cursor-pointer">
-                                <div class="w-8 h-8 rounded-xl border-2 border-blue-500"></div>
-                                <span class="font-quicksand text-gray-700">Rounded Large</span>
-                            </div>
-                            <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-200 cursor-pointer">
-                                <div class="w-8 h-8 rounded-2xl border-2 border-blue-500"></div>
-                                <span class="font-nunito font-bold text-blue-700">Cartoon (Default)</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Border Styles -->
-                    <div>
-                        <h4 class="font-nunito font-bold mb-3 text-gray-700">Border Styles</h4>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg border border-gray-200 cursor-pointer">
-                                <div class="w-8 h-8 rounded-lg border border-blue-500"></div>
-                                <span class="font-quicksand text-gray-700">Thin</span>
-                            </div>
-                            <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg border border-gray-200 cursor-pointer">
-                                <div class="w-8 h-8 rounded-lg border-2 border-blue-500"></div>
-                                <span class="font-quicksand text-gray-700">Medium</span>
-                            </div>
-                            <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-200 cursor-pointer">
-                                <div class="w-8 h-8 rounded-lg border-4 border-blue-500"></div>
-                                <span class="font-nunito font-bold text-blue-700">Thick (Default)</span>
-                            </div>
-                            <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg border border-gray-200 cursor-pointer">
-                                <div class="w-8 h-8 rounded-lg border-dashed border-2 border-blue-500"></div>
-                                <span class="font-quicksand text-gray-700">Dashed</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Shadow Options -->
-                    <div>
-                        <h4 class="font-nunito font-bold mb-3 text-gray-700">Shadow Styles</h4>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg border border-gray-200 cursor-pointer">
-                                <div class="w-8 h-8 rounded-lg bg-white border border-gray-200"></div>
-                                <span class="font-quicksand text-gray-700">None</span>
-                            </div>
-                            <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg border border-gray-200 cursor-pointer">
-                                <div class="w-8 h-8 rounded-lg bg-white border border-gray-200 shadow-sm"></div>
-                                <span class="font-quicksand text-gray-700">Small</span>
-                            </div>
-                            <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-200 cursor-pointer">
-                                <div class="w-8 h-8 rounded-lg bg-white border border-gray-200 shadow-md"></div>
-                                <span class="font-nunito font-bold text-blue-700">Medium (Default)</span>
-                            </div>
-                            <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg border border-gray-200 cursor-pointer">
-                                <div class="w-8 h-8 rounded-lg bg-white border border-gray-200 shadow-xl"></div>
-                                <span class="font-quicksand text-gray-700">Large</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flex justify-center mt-6">
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-nunito font-bold py-3 px-8 rounded-xl flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        Apply Customizations
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Preview Section -->
-            <div class="bg-white rounded-3xl shadow-lg p-6 border-4 border-gray-200">
-                <h3 class="font-nunito font-bold text-xl mb-4 text-gray-700">Live Preview</h3>
-                
-                <div class="bg-gray-100 rounded-xl p-4 mb-4">
-                    <p class="text-sm text-gray-500 mb-2">Customized component preview:</p>
-                    <div class="flex flex-wrap gap-4">
-                        <button class="bg-blue-500 hover:bg-blue-600 text-white font-nunito font-bold py-3 px-6 rounded-2xl transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 border-3 border-blue-600">
-                            Custom Button
-                        </button>
-                        
-                        <div class="bg-white rounded-2xl shadow-lg p-4 border-3 border-gray-200 transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                            <h4 class="font-nunito font-bold text-gray-800 mb-2">Custom Card</h4>
-                            <p class="font-quicksand text-gray-600">Your customized card styling.</p>
-                        </div>
-                        
-                        <input class="appearance-none border-3 border-gray-300 rounded-2xl py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all duration-300 font-quicksand" type="text" placeholder="Custom Input">
-                    </div>
-                </div>
-                
-                <div class="border-t-2 border-gray-200 pt-4">
-                    <h4 class="font-nunito font-bold text-lg mb-3 text-gray-700">Export Options</h4>
-                    <div class="flex flex-wrap gap-3">
-                        <button class="flex items-center bg-gray-800 hover:bg-gray-900 text-white font-nunito font-bold py-2 px-4 rounded-lg">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>
-                            </svg>
-                            Export as CSS
-                        </button>
-                        <button class="flex items-center bg-purple-600 hover:bg-purple-700 text-white font-nunito font-bold py-2 px-4 rounded-lg">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                            </svg>
-                            Download Settings
-                        </button>
-                        <button class="flex items-center bg-green-600 hover:bg-green-700 text-white font-nunito font-bold py-2 px-4 rounded-lg">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
-                            </svg>
-                            Share Theme
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="fixed right-0 top-1/4 z-50 transform translate-x-full transition-transform duration-300" id="customizer-panel">
+  <!-- Toggle Button -->
+  <button id="customizer-toggle" class="absolute left-0 top-16 -translate-x-full bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-l-xl shadow-lg">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+    </svg>
+  </button>
+
+  <!-- Customizer Panel Body -->
+  <div class="bg-white border-4 border-l-0 border-gray-200 rounded-l-3xl shadow-2xl p-6 w-80 h-screen overflow-y-auto">
+    <div class="mb-6">
+      <h2 class="font-nunito font-bold text-2xl text-gray-800 mb-2">UI Customizer</h2>
+      <p class="text-gray-600 font-quicksand text-sm">Personalize your Cartoon UI experience</p>
+      <div class="border-b-2 border-gray-200 mt-2"></div>
+    </div>
+
+    <!-- Color Scheme -->
+    <div class="mb-6">
+      <h3 class="font-nunito font-bold text-lg mb-3 text-gray-700">Color Scheme</h3>
+      <div class="grid grid-cols-4 gap-3">
+        <button class="color-preset w-full aspect-square rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 border-2 border-transparent hover:border-gray-300 transition-all" data-primary="#3B82F6" data-secondary="#8B5CF6"></button>
+        <button class="color-preset w-full aspect-square rounded-xl bg-gradient-to-br from-green-500 to-teal-500 border-2 border-transparent hover:border-gray-300 transition-all" data-primary="#10B981" data-secondary="#14B8A6"></button>
+        <button class="color-preset w-full aspect-square rounded-xl bg-gradient-to-br from-rose-500 to-pink-500 border-2 border-transparent hover:border-gray-300 transition-all" data-primary="#F43F5E" data-secondary="#EC4899"></button>
+        <button class="color-preset w-full aspect-square rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 border-2 border-transparent hover:border-gray-300 transition-all" data-primary="#F59E0B" data-secondary="#F97316"></button>
+      </div>
+
+      <div class="mt-4">
+        <label class="block font-nunito font-bold text-sm text-gray-700 mb-1">Primary Color</label>
+        <div class="flex items-center">
+          <input type="color" id="primary-color-picker" class="color-picker h-10 w-10 rounded overflow-hidden cursor-pointer border-0" value="#3B82F6">
+          <span id="primary-color-hex" class="ml-3 font-mono text-sm font-bold">#3B82F6</span>
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <label class="block font-nunito font-bold text-sm text-gray-700 mb-1">Secondary Color</label>
+        <div class="flex items-center">
+          <input type="color" id="secondary-color-picker" class="color-picker h-10 w-10 rounded overflow-hidden cursor-pointer border-0" value="#8B5CF6">
+          <span id="secondary-color-hex" class="ml-3 font-mono text-sm font-bold">#8B5CF6</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="mb-6">
+      <h3 class="font-nunito font-bold text-lg mb-3 text-gray-700">Typography</h3>
+      
+      <div class="mb-3">
+        <label class="block font-nunito font-bold text-sm text-gray-700 mb-2">Heading Font</label>
+        <div class="relative">
+          <select id="heading-font" class="appearance-none border-3 border-gray-300 rounded-xl w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all duration-300 font-quicksand">
+            <option value="font-nunito" selected>Nunito</option>
+            <option value="font-poppins">Poppins</option>
+            <option value="font-montserrat">Montserrat</option>
+            <option value="font-sans">Sans Serif</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="block font-nunito font-bold text-sm text-gray-700 mb-2">Body Font</label>
+        <div class="relative">
+          <select id="body-font" class="appearance-none border-3 border-gray-300 rounded-xl w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all duration-300 font-quicksand">
+            <option value="font-quicksand" selected>Quicksand</option>
+            <option value="font-roboto">Roboto</option>
+            <option value="font-lato">Lato</option>
+            <option value="font-sans">Sans Serif</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label class="block font-nunito font-bold text-sm text-gray-700 mb-2">Font Size</label>
+        <div class="flex items-center">
+          <button id="decrease-font" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold px-3 py-1 rounded-l-lg">A-</button>
+          <div id="font-size-display" class="bg-white border-y-2 border-gray-200 py-1 px-4 text-center font-mono text-sm min-w-[60px]">100%</div>
+          <button id="increase-font" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold px-3 py-1 rounded-r-lg">A+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Border & Radius -->
+    <div class="mb-6">
+      <h3 class="font-nunito font-bold text-lg mb-3 text-gray-700">Border & Radius</h3>
+      
+      <div class="mb-4">
+        <label class="block font-nunito font-bold text-sm text-gray-700 mb-2">Border Radius</label>
+        <div class="flex flex-wrap gap-2">
+          <button class="radius-preset w-10 h-10 bg-white border-2 border-gray-300 hover:border-blue-500 rounded-none" data-radius="0"></button>
+          <button class="radius-preset w-10 h-10 bg-white border-2 border-gray-300 hover:border-blue-500 rounded-md" data-radius="0.375rem"></button>
+          <button class="radius-preset w-10 h-10 bg-white border-2 border-gray-300 hover:border-blue-500 rounded-xl" data-radius="0.75rem"></button>
+          <button class="radius-preset w-10 h-10 bg-white border-2 border-gray-300 hover:border-blue-500 rounded-2xl" data-radius="1rem"></button>
+          <button class="radius-preset w-10 h-10 bg-white border-2 border-gray-300 hover:border-blue-500 rounded-full" data-radius="9999px"></button>
+        </div>
+      </div>
+      
+      <div>
+        <label class="block font-nunito font-bold text-sm text-gray-700 mb-2">Border Width</label>
+        <div class="flex items-center">
+          <input type="range" id="border-width-range" min="0" max="8" step="1" value="2" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+          <span id="border-width-value" class="ml-3 font-mono text-sm font-bold min-w-[30px] text-right">2px</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Effects & Animation -->
+    <div class="mb-6">
+      <h3 class="font-nunito font-bold text-lg mb-3 text-gray-700">Effects</h3>
+      
+      <div class="flex items-center justify-between mb-3">
+        <label class="font-nunito font-bold text-sm text-gray-700">Shadow Intensity</label>
+        <div class="flex items-center">
+          <input type="range" id="shadow-range" min="0" max="3" step="1" value="1" class="w-24 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+          <span id="shadow-value" class="ml-3 font-mono text-sm font-bold min-w-[30px]">Med</span>
+        </div>
+      </div>
+      
+      <div class="flex items-center justify-between">
+        <label class="font-nunito font-bold text-sm text-gray-700">Animations</label>
+        <label class="inline-flex items-center cursor-pointer">
+          <input type="checkbox" id="animations-toggle" class="sr-only peer" checked>
+          <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500"></div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Themes -->
+    <div class="mb-6">
+      <h3 class="font-nunito font-bold text-lg mb-3 text-gray-700">Theme Mode</h3>
+      <div class="flex items-center space-x-4">
+        <button id="light-theme" class="theme-selector flex-1 py-2 px-4 rounded-lg bg-white border-2 border-gray-300 hover:border-blue-500 flex items-center justify-center">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          Light
+        </button>
+        <button id="dark-theme" class="theme-selector flex-1 py-2 px-4 rounded-lg bg-gray-800 text-white border-2 border-gray-700 hover:border-blue-500 flex items-center justify-center">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+          Dark
+        </button>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="border-t-2 border-gray-200 pt-4">
+      <div class="flex space-x-3">
+        <button id="save-theme" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-nunito font-bold py-2 px-4 rounded-xl flex items-center justify-center">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path>
+          </svg>
+          Save
+        </button>
+        <button id="reset-theme" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-nunito font-bold py-2 px-4 rounded-xl flex items-center justify-center">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+          </svg>
+          Reset
+        </button>
+      </div>
+      <div class="text-xs text-center mt-4 text-gray-500">
+        Last updated: 2025-02-28 05:46:02<br>
+        User: heisssen
+      </div>
+    </div>
+  </div>
+</div>
+
         
         <!-- Feedback Section -->
         <section id="feedback" class="mb-16">
@@ -2976,49 +3039,395 @@
     
     <!-- JavaScript for interactivity -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Menu toggle functionality
-            const menuButton = document.getElementById('menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            if (menuButton && mobileMenu) {
-                menuButton.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('hidden');
-                });
-            }
-            
-            // Modal demo functionality
-            const showModalButton = document.getElementById('show-modal-demo');
-            if (showModalButton) {
-                showModalButton.addEventListener('click', function() {
-                    alert('In a real implementation, this would open a modal dialog.');
-                });
-            }
-            
-            // Toast demo functionality
-            const showToastButton = document.getElementById('show-toast-demo');
-            if (showToastButton) {
-                showToastButton.addEventListener('click', function() {
-                    alert('In a real implementation, this would show a toast notification.');
-                });
-            }
-            
-            // Theme toggle functionality (simplified example)
-            const allThemeButtons = document.querySelectorAll('[data-theme]');
-            allThemeButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const theme = this.getAttribute('data-theme');
-                    console.log(`Theme switched to: ${theme}`);
-                    // In a real implementation, this would apply different theme classes
-                });
-            });
-            
-            // Current user and time display
-            const userTimeDisplay = document.querySelectorAll('.user-time-display');
-            userTimeDisplay.forEach(element => {
-                element.textContent = `User: heisssen | Current time: 2025-02-28 05:35:17`;
-            });
-        });
-    </script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize variables
+  let currentSettings = loadSettings() || getDefaultSettings();
+  
+  // Customizer toggle
+  const customizerPanel = document.getElementById('customizer-panel');
+  const customizerToggle = document.getElementById('customizer-toggle');
+  
+  customizerToggle.addEventListener('click', function() {
+    customizerPanel.classList.toggle('open');
+  });
+  
+  // Color pickers
+  const primaryColorPicker = document.getElementById('primary-color-picker');
+  const secondaryColorPicker = document.getElementById('secondary-color-picker');
+  const primaryColorHex = document.getElementById('primary-color-hex');
+  const secondaryColorHex = document.getElementById('secondary-color-hex');
+  
+  primaryColorPicker.value = currentSettings.primaryColor;
+  secondaryColorPicker.value = currentSettings.secondaryColor;
+  primaryColorHex.textContent = currentSettings.primaryColor;
+  secondaryColorHex.textContent = currentSettings.secondaryColor;
+  
+  primaryColorPicker.addEventListener('input', function() {
+    currentSettings.primaryColor = this.value;
+    primaryColorHex.textContent = this.value;
+    applySettings();
+  });
+  
+  secondaryColorPicker.addEventListener('input', function() {
+    currentSettings.secondaryColor = this.value;
+    secondaryColorHex.textContent = this.value;
+    applySettings();
+  });
+  
+  // Color presets
+  const colorPresets = document.querySelectorAll('.color-preset');
+  colorPresets.forEach(button => {
+    button.addEventListener('click', function() {
+      const primary = this.dataset.primary;
+      const secondary = this.dataset.secondary;
+      
+      currentSettings.primaryColor = primary;
+      currentSettings.secondaryColor = secondary;
+      
+      primaryColorPicker.value = primary;
+      secondaryColorPicker.value = secondary;
+      primaryColorHex.textContent = primary;
+      secondaryColorHex.textContent = secondary;
+      
+      applySettings();
+    });
+  });
+  
+  // Typography selectors
+  const headingFont = document.getElementById('heading-font');
+  const bodyFont = document.getElementById('body-font');
+  
+  headingFont.value = currentSettings.headingFont;
+  bodyFont.value = currentSettings.bodyFont;
+  
+  headingFont.addEventListener('change', function() {
+    currentSettings.headingFont = this.value;
+    applySettings();
+  });
+  
+  bodyFont.addEventListener('change', function() {
+    currentSettings.bodyFont = this.value;
+    applySettings();
+  });
+  
+  // Font size controls
+  const decreaseFontBtn = document.getElementById('decrease-font');
+  const increaseFontBtn = document.getElementById('increase-font');
+  const fontSizeDisplay = document.getElementById('font-size-display');
+  
+  fontSizeDisplay.textContent = `${Math.round(currentSettings.fontSize * 100)}%`;
+  
+  decreaseFontBtn.addEventListener('click', function() {
+    if (currentSettings.fontSize > 0.7) {
+      currentSettings.fontSize -= 0.1;
+      fontSizeDisplay.textContent = `${Math.round(currentSettings.fontSize * 100)}%`;
+      applySettings();
+    }
+  });
+  
+  increaseFontBtn.addEventListener('click', function() {
+    if (currentSettings.fontSize < 1.3) {
+      currentSettings.fontSize += 0.1;
+      fontSizeDisplay.textContent = `${Math.round(currentSettings.fontSize * 100)}%`;
+      applySettings();
+    }
+  });
+  
+  // Border radius presets
+  const radiusPresets = document.querySelectorAll('.radius-preset');
+  radiusPresets.forEach(button => {
+    if (button.dataset.radius === currentSettings.borderRadius) {
+      button.classList.add('border-blue-500');
+    }
+    
+    button.addEventListener('click', function() {
+      radiusPresets.forEach(btn => btn.classList.remove('border-blue-500'));
+      this.classList.add('border-blue-500');
+      
+      currentSettings.borderRadius = this.dataset.radius;
+      applySettings();
+    });
+  });
+  
+  // Border width range
+  const borderWidthRange = document.getElementById('border-width-range');
+  const borderWidthValue = document.getElementById('border-width-value');
+  
+  borderWidthRange.value = currentSettings.borderWidth;
+  borderWidthValue.textContent = `${currentSettings.borderWidth}px`;
+  
+  borderWidthRange.addEventListener('input', function() {
+    currentSettings.borderWidth = parseInt(this.value);
+    borderWidthValue.textContent = `${currentSettings.borderWidth}px`;
+    applySettings();
+  });
+  
+  // Shadow intensity
+  const shadowRange = document.getElementById('shadow-range');
+  const shadowValue = document.getElementById('shadow-value');
+  
+  shadowRange.value = currentSettings.shadowIntensity;
+  updateShadowLabel(currentSettings.shadowIntensity);
+  
+  shadowRange.addEventListener('input', function() {
+    currentSettings.shadowIntensity = parseInt(this.value);
+    updateShadowLabel(currentSettings.shadowIntensity);
+    applySettings();
+  });
+  
+  function updateShadowLabel(value) {
+    const labels = ['None', 'Low', 'Med', 'High'];
+    shadowValue.textContent = labels[value];
+  }
+  
+  // Animation toggle
+  const animationsToggle = document.getElementById('animations-toggle');
+  animationsToggle.checked = currentSettings.animationsEnabled;
+  
+  animationsToggle.addEventListener('change', function() {
+    currentSettings.animationsEnabled = this.checked;
+    applySettings();
+  });
+  
+  // Theme mode selectors
+  const lightThemeBtn = document.getElementById('light-theme');
+  const darkThemeBtn = document.getElementById('dark-theme');
+  
+  if (currentSettings.darkMode) {
+    darkThemeBtn.classList.add('border-blue-500');
+    lightThemeBtn.classList.remove('border-blue-500');
+  } else {
+    lightThemeBtn.classList.add('border-blue-500');
+    darkThemeBtn.classList.remove('border-blue-500');
+  }
+  
+  lightThemeBtn.addEventListener('click', function() {
+    currentSettings.darkMode = false;
+    lightThemeBtn.classList.add('border-blue-500');
+    darkThemeBtn.classList.remove('border-blue-500');
+    applySettings();
+  });
+  
+  darkThemeBtn.addEventListener('click', function() {
+    currentSettings.darkMode = true;
+    darkThemeBtn.classList.add('border-blue-500');
+    lightThemeBtn.classList.remove('border-blue-500');
+    applySettings();
+  });
+  
+  // Save and Reset buttons
+  const saveThemeBtn = document.getElementById('save-theme');
+  const resetThemeBtn = document.getElementById('reset-theme');
+  
+  saveThemeBtn.addEventListener('click', function() {
+    saveSettings(currentSettings);
+    showToast('Theme settings saved successfully!');
+  });
+  
+  resetThemeBtn.addEventListener('click', function() {
+    currentSettings = getDefaultSettings();
+    updateUIFromSettings();
+    applySettings();
+    saveSettings(currentSettings);
+    showToast('Theme reset to defaults');
+  });
+  
+  // Apply initial settings
+  applySettings();
+  
+  // Helper Functions
+  function getDefaultSettings() {
+    return {
+      primaryColor: '#3B82F6',
+      secondaryColor: '#8B5CF6',
+      headingFont: 'font-nunito',
+      bodyFont: 'font-quicksand',
+      fontSize: 1,
+      borderRadius: '0.75rem',
+      borderWidth: 2,
+      shadowIntensity: 1,
+      animationsEnabled: true,
+      darkMode: false,
+      lastUpdated: '2025-02-28 05:48:03',
+      userLogin: 'heisssen'
+    };
+  }
+  
+  function loadSettings() {
+    const savedSettings = localStorage.getItem('cartoonUI-settings');
+    return savedSettings ? JSON.parse(savedSettings) : null;
+  }
+  
+  function saveSettings(settings) {
+    settings.lastUpdated = '2025-02-28 05:48:03';
+    settings.userLogin = 'heisssen';
+    localStorage.setItem('cartoonUI-settings', JSON.stringify(settings));
+  }
+  
+  function updateUIFromSettings() {
+    // Update color pickers
+    primaryColorPicker.value = currentSettings.primaryColor;
+    secondaryColorPicker.value = currentSettings.secondaryColor;
+    primaryColorHex.textContent = currentSettings.primaryColor;
+    secondaryColorHex.textContent = currentSettings.secondaryColor;
+    
+    // Update font selectors
+    headingFont.value = currentSettings.headingFont;
+    bodyFont.value = currentSettings.bodyFont;
+    
+    // Update font size
+    fontSizeDisplay.textContent = `${Math.round(currentSettings.fontSize * 100)}%`;
+    
+    // Update border radius
+    radiusPresets.forEach(btn => {
+      btn.classList.remove('border-blue-500');
+      if (btn.dataset.radius === currentSettings.borderRadius) {
+        btn.classList.add('border-blue-500');
+      }
+    });
+    
+    // Update border width
+    borderWidthRange.value = currentSettings.borderWidth;
+    borderWidthValue.textContent = `${currentSettings.borderWidth}px`;
+    
+    // Update shadow intensity
+    shadowRange.value = currentSettings.shadowIntensity;
+    updateShadowLabel(currentSettings.shadowIntensity);
+    
+    // Update animation toggle
+    animationsToggle.checked = currentSettings.animationsEnabled;
+    
+    // Update theme mode
+    if (currentSettings.darkMode) {
+      darkThemeBtn.classList.add('border-blue-500');
+      lightThemeBtn.classList.remove('border-blue-500');
+    } else {
+      lightThemeBtn.classList.add('border-blue-500');
+      darkThemeBtn.classList.remove('border-blue-500');
+    }
+  }
+  
+  function applySettings() {
+    const root = document.documentElement;
+    
+    // Apply colors
+    root.style.setProperty('--primary-color', currentSettings.primaryColor);
+    root.style.setProperty('--primary-color-hover', adjustColorBrightness(currentSettings.primaryColor, -15));
+    root.style.setProperty('--primary-color-light', addOpacity(currentSettings.primaryColor, 0.1));
+    root.style.setProperty('--secondary-color', currentSettings.secondaryColor);
+    root.style.setProperty('--secondary-color-hover', adjustColorBrightness(currentSettings.secondaryColor, -15));
+    root.style.setProperty('--secondary-color-light', addOpacity(currentSettings.secondaryColor, 0.1));
+    
+    // Apply fonts
+    const headingFontName = currentSettings.headingFont.replace('font-', '');
+    const bodyFontName = currentSettings.bodyFont.replace('font-', '');
+    
+    root.style.setProperty('--heading-font', `'${capitalizeFirstLetter(headingFontName)}', sans-serif`);
+    root.style.setProperty('--body-font', `'${capitalizeFirstLetter(bodyFontName)}', sans-serif`);
+    root.style.setProperty('--font-size-scale', currentSettings.fontSize);
+    
+    // Apply borders
+    root.style.setProperty('--border-radius', currentSettings.borderRadius);
+    root.style.setProperty('--border-width', `${currentSettings.borderWidth}px`);
+    
+    // Apply shadows
+    const shadowValues = [
+      'var(--shadow-sm)',
+      'var(--shadow-md)',
+      'var(--shadow-lg)',
+      'var(--shadow-xl)'
+    ];
+    root.style.setProperty('--shadow-intensity', shadowValues[currentSettings.shadowIntensity]);
+    
+    // Apply animations
+    root.style.setProperty('--animation-enabled', currentSettings.animationsEnabled ? '1' : '0');
+    
+    // Apply theme mode
+    if (currentSettings.darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+    
+    // Update component demo previews if they exist
+    updateComponentPreviews();
+  }
+  
+  function adjustColorBrightness(hex, percent) {
+    // Convert hex to RGB
+    let r = parseInt(hex.substring(1, 3), 16);
+    let g = parseInt(hex.substring(3, 5), 16);
+    let b = parseInt(hex.substring(5, 7), 16);
+    
+    // Adjust brightness
+    r = Math.max(0, Math.min(255, r + percent));
+    g = Math.max(0, Math.min(255, g + percent));
+    b = Math.max(0, Math.min(255, b + percent));
+    
+    // Convert back to hex
+    return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+  }
+  
+  function addOpacity(hex, opacity) {
+    // Convert hex to RGB
+    let r = parseInt(hex.substring(1, 3), 16);
+    let g = parseInt(hex.substring(3, 5), 16);
+    let b = parseInt(hex.substring(5, 7), 16);
+    
+    // Return rgba value
+    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+  }
+  
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  
+  function showToast(message) {
+    // Create toast element
+    const toast = document.createElement('div');
+    toast.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 transform transition-all duration-300 translate-y-20 opacity-0';
+    toast.textContent = message;
+    
+    // Add to body
+    document.body.appendChild(toast);
+    
+    // Show toast
+    setTimeout(() => {
+      toast.classList.remove('translate-y-20', 'opacity-0');
+    }, 10);
+    
+    // Hide toast after 3 seconds
+    setTimeout(() => {
+      toast.classList.add('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        document.body.removeChild(toast);
+      }, 300);
+    }, 3000);
+  }
+  
+  function updateComponentPreviews() {
+    // Update any live component previews if they exist
+    // For demo purposes - you would expand this based on your specific components
+    
+    // Example: Update button previews
+    const previewButtons = document.querySelectorAll('.preview-button');
+    if (previewButtons.length) {
+      previewButtons.forEach(button => {
+        button.style.borderRadius = currentSettings.borderRadius;
+        button.style.borderWidth = `${currentSettings.borderWidth}px`;
+      });
+    }
+    
+    // Example: Update card previews
+    const previewCards = document.querySelectorAll('.preview-card');
+    if (previewCards.length) {
+      previewCards.forEach(card => {
+        card.style.borderRadius = currentSettings.borderRadius;
+        card.style.borderWidth = `${currentSettings.borderWidth}px`;
+      });
+    }
+  }
+});
+ </script>
 </body>
 </html>
