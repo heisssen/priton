@@ -846,6 +846,138 @@ input:checked + .pricing-slider:before {
     transform: translateY(-3px);
 }
 
+/* Ribbon Style */
+.ribbon-wrapper {
+    width: 85px;
+    height: 88px;
+    overflow: hidden;
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    z-index: 2;
+}
+
+.ribbon {
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    transform: rotate(45deg);
+    position: relative;
+    padding: 7px 0;
+    left: -5px;
+    top: 15px;
+    width: 120px;
+    background-color: var(--accent-color);
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+}
+
+/* Progress Bar Styles */
+.skill-progress {
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.skill-progress-bar {
+    height: 100%;
+    width: 0; /* Will be set by JavaScript */
+    background: linear-gradient(to right, var(--accent-color), var(--accent-light));
+    border-radius: 5px;
+    transition: width 1.5s ease;
+    position: relative;
+}
+
+.skill-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.2) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent 75%,
+        transparent
+    );
+    background-size: 25px 25px;
+    animation: progress-animation 2s linear infinite;
+    border-radius: 5px;
+}
+
+@keyframes progress-animation {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 50px 50px;
+    }
+}
+
+/* About section enhancements */
+.badge.bg-astro {
+    background-color: var(--accent-color);
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 3px 8px rgba(233, 30, 99, 0.3);
+    transition: all 0.3s ease;
+}
+
+.badge.bg-astro:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+}
+
+/* Add animation to about section profile card */
+.about-section .position-relative {
+    transition: all 0.5s ease;
+}
+
+.about-section .position-relative:hover {
+    transform: translateY(-10px);
+}
+
+.about-section .position-relative:hover img {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Floating Animation */
+.floating {
+    animation: floating 3s ease infinite;
+}
+
+@keyframes floating {
+    0% { transform: translate(0, 0px); }
+    50% { transform: translate(0, 15px); }
+    100% { transform: translate(0, -0px); }
+}
+
+/* Pulse Button Animation */
+.pulse-btn {
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+    0% { box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(233, 30, 99, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(233, 30, 99, 0); }
+}
+
+/* Divider styles */
+.divider-center {
+    margin: 0 auto;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
 /* Media Queries */
 @media (max-width: 992px) {
     .moon {
@@ -932,7 +1064,319 @@ input:checked + .pricing-slider:before {
         padding: 10px 20px;
         font-size: 0.9rem;
     }
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-3px);
+}
+
+/* Zodiac wheel styles */
+.wheel-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.zodiac-circle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(233, 30, 99, 0.3);
+    border-radius: 50%;
+    animation: rotate 120s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.inner-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.zodiac-sign {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    margin-left: -20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.zodiac-sign:hover, .zodiac-sign.active {
+    background-color: var(--accent-color);
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(233, 30, 99, 0.6);
+}
+
+/* Tooltip styles */
+.zodiac-tooltip {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.zodiac-tooltip:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--accent-color) transparent transparent transparent;
+}
+
+.zodiac-symbol:hover .zodiac-tooltip {
+    opacity: 1;
+    visibility: visible;
+    top: -45px;
+}
+
+/* Lunar phase display */
+.phase-display {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.moon-display {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    position: relative;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    overflow: hidden;
+}
+
+.phase-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    transform: translateX(35%);
+}
+
+/* Countdown timer styles */
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.countdown-item {
+    text-align: center;
+}
+
+.countdown-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background-color: var(--primary-color);
+    color: white;
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.countdown-label {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: var(--accent-color);
+}
+
+/* Typewriter effect */
+.typewriter-heading {
+    overflow: hidden;
+    border-right: 3px solid var(--accent-color);
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+.typing-complete {
+    border-right: none;
+    animation: none;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent-color) }
+}
+
+/* Navbar scrolled styles */
+.navbar-scrolled {
+    background-color: var(--primary-color) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    transition: all 0.3s ease;
+}
+
+/* Counter styles for statistics */
+.counter {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    display: inline-block;
+}
+
+/* Statistics card styles */
+.stat-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+    font-size: 36px;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.stat-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 0;
+}
+
+/* Custom alert styles */
+.custom-alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+    background-color: white;
+    border-left: 4px solid var(--accent-color);
+    border-radius: 5px;
+    padding: 15px 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateX(150%);
+    transition: transform 0.3s ease;
+}
+
+.custom-alert.show {
+    transform: translateX(0);
+}
+
+.alert-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+
+.alert-message {
+    margin-bottom: 0;
+    color: var(--text-dark);
+}
+
+.alert-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #888;
+}
+
+/* Horoscope preview styles */
+.horoscope-text {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.horoscope-text:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }	
+	
 </style>
 </head>
 
@@ -1492,7 +1936,6 @@ input:checked + .pricing-slider:before {
         </div>
     </section>
 
-    <!-- Gallery Section -->
     <section id="gallery" class="py-5 bg-light">
         <div class="container py-5">
             <div class="row mb-5 text-center">
@@ -1502,8 +1945,7 @@ input:checked + .pricing-slider:before {
                     <p class="mt-4">Моменти з курсів, консультацій та астрологічних заходів</p>
                 </div>
             </div>
-            
-            <!-- Gallery Filter -->
+
             <div class="row mb-4 justify-content-center">
                 <div class="col-auto">
                     <div class="gallery-filter d-flex">
@@ -1514,9 +1956,8 @@ input:checked + .pricing-slider:before {
                     </div>
                 </div>
             </div>
-            
+
             <div class="row gallery-container">
-                <!-- Gallery Item 1 -->
                 <div class="col-md-6 col-lg-4 gallery-item" data-category="courses">
                     <div class="img-hover-container">
                         <img src="https://placehold.co/600x400/0d1b3a/e91e63?text=Курс+астрології" class="img-fluid" alt="Курс астрології">
@@ -1528,68 +1969,58 @@ input:checked + .pricing-slider:before {
                         </div>
                     </div>
                 </div>
-                
-                <!-- Gallery Item 2 -->
                 <div class="col-md-6 col-lg-4 gallery-item" data-category="consultations">
-                    <div class="img-hover-container">
-                        <img src="https://placehold.co/600x400/1a2a4a/e91e63?text=Консультація" class="img-fluid" alt="Консультація">
-                        <div class="img-hover-overlay">
-                            <div>
-                                <h5 class="text-white mb-2">Індивідуальний підхід</h5>
-                                <p class="mb-0 text-white-50">Робочий процес</p>
-                            </div>
+                  <div class="img-hover-container">
+                    <img src="https://placehold.co/600x400/1a2a4a/e91e63?text=Консультація" class="img-fluid" alt="Консультація">
+                      <div class="img-hover-overlay">
+                        <div>
+                            <h5 class="text-white mb-2">Індивідуальний підхід</h5>
+                            <p class="mb-0 text-white-50">Робочий процес</p>
                         </div>
                     </div>
+                    </div>
                 </div>
-                
-                <!-- Gallery Item 3 -->
                 <div class="col-md-6 col-lg-4 gallery-item" data-category="events">
-                    <div class="img-hover-container">
-                        <img src="https://placehold.co/600x400/2a3a5a/e91e63?text=Астрологічний+семінар" class="img-fluid" alt="Астрологічний семінар">
-                        <div class="img-hover-overlay">
-                            <div>
-                                <h5 class="text-white mb-2">Щорічний семінар</h5>
-                                <p class="mb-0 text-white-50">Вінниця, 2024</p>
-                            </div>
+                   <div class="img-hover-container">
+                    <img src="https://placehold.co/600x400/2a3a5a/e91e63?text=Астрологічний+семінар" class="img-fluid" alt="Астрологічний семінар">
+                       <div class="img-hover-overlay">
+                        <div>
+                            <h5 class="text-white mb-2">Щорічний семінар</h5>
+                            <p class="mb-0 text-white-50">Вінниця, 2024</p>
                         </div>
                     </div>
+                    </div>
                 </div>
-                
-                <!-- Gallery Item 4 -->
                 <div class="col-md-6 col-lg-4 gallery-item" data-category="courses">
-                    <div class="img-hover-container">
-                        <img src="https://placehold.co/600x400/0d1b3a/e91e63?text=Практичне+заняття" class="img-fluid" alt="Практичне заняття">
-                        <div class="img-hover-overlay">
-                            <div>
-                                <h5 class="text-white mb-2">Робота з картами</h5>
-                                <p class="mb-0 text-white-50">Практичне заняття</p>
-                            </div>
+                     <div class="img-hover-container">
+                    <img src="https://placehold.co/600x400/0d1b3a/e91e63?text=Практичне+заняття" class="img-fluid" alt="Практичне заняття">
+                         <div class="img-hover-overlay">
+                        <div>
+                            <h5 class="text-white mb-2">Робота з картами</h5>
+                            <p class="mb-0 text-white-50">Практичне заняття</p>
                         </div>
                     </div>
+                    </div>
                 </div>
-                
-                <!-- Gallery Item 5 -->
                 <div class="col-md-6 col-lg-4 gallery-item" data-category="events">
-                    <div class="img-hover-container">
-                        <img src="https://placehold.co/600x400/2a3a5a/e91e63?text=Конференція" class="img-fluid" alt="Конференція астрологів">
+                     <div class="img-hover-container">
+                       <img src="https://placehold.co/600x400/2a3a5a/e91e63?text=Конференція" class="img-fluid" alt="Конференція астрологів">
                         <div class="img-hover-overlay">
-                            <div>
-                                <h5 class="text-white mb-2">Міжнародна конференція</h5>
-                                <p class="mb-0 text-white-50">Київ, 2024</p>
-                            </div>
+                           <div>
+                            <h5 class="text-white mb-2">Міжнародна конференція</h5>
+                            <p class="mb-0 text-white-50">Київ, 2024</p>
                         </div>
                     </div>
+                     </div>
                 </div>
-                
-                <!-- Gallery Item 6 -->
                 <div class="col-md-6 col-lg-4 gallery-item" data-category="consultations">
                     <div class="img-hover-container">
-                        <img src="https://placehold.co/600x400/1a2a4a/e91e63?text=Онлайн+консультація" class="img-fluid" alt="Онлайн консультація">
+                    <img src="https://placehold.co/600x400/1a2a4a/e91e63?text=Онлайн+консультація" class="img-fluid" alt="Онлайн консультація">
                         <div class="img-hover-overlay">
-                            <div>
-                                <h5 class="text-white mb-2">Онлайн формат</h5>
-                                <p class="mb-0 text-white-50">Дистанційні консультації</p>
-                            </div>
+                        <div>
+                           <h5 class="text-white mb-2">Онлайн формат</h5>
+                            <p class="mb-0 text-white-50">Дистанційні консультації</p>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -1956,27 +2387,28 @@ input:checked + .pricing-slider:before {
     
     <!-- Custom JavaScript -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     createStars();
     createConstellations();
     initializeAnimations();
     setupGalleryFilter();
     setupPricingToggle();
     setupFormHandlers();
-    
+    // animateSkillBars(); // Moved inside initializeAnimations, called on scroll
+    setupCounters();
+
     // Add current date to the footer
-    const currentDate = new Date('2025-02-28 06:43:33');
+    const currentDate = new Date('2025-02-28T07:26:48');
     const formattedDate = currentDate.toLocaleDateString('uk-UA', {
         day: '2-digit',
         month: '2-digit',
         year: 'numeric'
     });
-    
     const dateElements = document.querySelectorAll('[data-current-date]');
     dateElements.forEach(element => {
         element.textContent = formattedDate;
     });
-    
+
     // Add current user if logged in
     const currentUser = 'heisssen';
     const userElements = document.querySelectorAll('[data-current-user]');
@@ -1986,35 +2418,49 @@ input:checked + .pricing-slider:before {
             element.classList.remove('d-none');
         }
     });
+
+    // Create user menu if needed
+    if (currentUser) {
+        const userMenuContainer = document.querySelector('.user-menu-container');
+        if (userMenuContainer) {
+            userMenuContainer.innerHTML = `
+<div class="dropdown">
+    <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-user-circle me-2"></i>${currentUser}
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+        <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Профіль</a></li>
+        <li><a class="dropdown-item" href="#"><i class="fas fa-calendar me-2"></i>Мої консультації</a></li>
+        <li><a class="dropdown-item" href="#"><i class="fas fa-book me-2"></i>Мої курси</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Вийти</a></li>
+    </ul>
+</div>
+`;
+        }
+    }
 });
 
 // Create stars for the starfield background
 function createStars() {
     const starField = document.getElementById('starField');
     if (!starField) return;
-    
     const starsCount = 150;
-    
     for (let i = 0; i < starsCount; i++) {
         const star = document.createElement('div');
         star.classList.add('star');
-        
         // Random position
         const posX = Math.floor(Math.random() * 100);
         const posY = Math.floor(Math.random() * 100);
-        
         // Random size
         const size = Math.random() * 3;
-        
         // Random animation duration
         const duration = 2 + Math.random() * 3;
-        
         star.style.left = posX + '%';
         star.style.top = posY + '%';
         star.style.width = size + 'px';
         star.style.height = size + 'px';
         star.style.setProperty('--duration', duration + 's');
-        
         starField.appendChild(star);
     }
 }
@@ -2023,48 +2469,37 @@ function createStars() {
 function createConstellations() {
     const constellation = document.getElementById('footerConstellation');
     if (!constellation) return;
-    
     const dotsCount = 50;
     const linesCount = 20;
     const dots = [];
-    
     // Create dots
     for (let i = 0; i < dotsCount; i++) {
         const dot = document.createElement('div');
         dot.classList.add('constellation-dot');
-        
         // Random position
         const posX = Math.floor(Math.random() * 100);
         const posY = Math.floor(Math.random() * 100);
-        
         dot.style.left = posX + '%';
         dot.style.top = posY + '%';
-        
         constellation.appendChild(dot);
         dots.push({ x: posX, y: posY, element: dot });
     }
-    
     // Create lines between random dots
     for (let i = 0; i < linesCount; i++) {
         const dot1 = dots[Math.floor(Math.random() * dots.length)];
         const dot2 = dots[Math.floor(Math.random() * dots.length)];
-        
         if (dot1 === dot2) continue;
-        
         const line = document.createElement('div');
         line.classList.add('constellation-line');
-        
         // Calculate line properties
         const dx = dot2.x - dot1.x;
         const dy = dot2.y - dot1.y;
         const length = Math.sqrt(dx * dx + dy * dy);
         const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-        
         line.style.width = length + '%';
         line.style.left = dot1.x + '%';
         line.style.top = dot1.y + '%';
         line.style.transform = `rotate(${angle}deg)`;
-        
         constellation.appendChild(line);
     }
 }
@@ -2073,14 +2508,14 @@ function createConstellations() {
 function initializeAnimations() {
     // Reveal elements on scroll
     const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    
+    const skillBars = document.querySelectorAll('.skill-progress-bar'); // Get skill bars
+
     const revealOnScroll = () => {
         const windowHeight = window.innerHeight;
-        
+
         revealElements.forEach(element => {
             const elementTop = element.getBoundingClientRect().top;
             const elementVisible = 150;
-            
             if (elementTop < windowHeight - elementVisible) {
                 // Add delay if specified
                 const delay = element.dataset.delay || 0;
@@ -2089,199 +2524,189 @@ function initializeAnimations() {
                 }, delay);
             }
         });
-        
-        // Animate check icons
-        document.querySelectorAll('.check-icon').forEach(icon => {
-            const iconTop = icon.getBoundingClientRect().top;
-            if (iconTop < windowHeight) {
-                const delay = icon.parentElement.dataset.delay || 0;
-                setTimeout(() => {
-                    icon.style.animationDelay = delay + 'ms';
-                    icon.style.animationPlayState = 'running';
-                }, delay);
-            }
-        });
-        
-        // Animate skill progress bars
-        document.querySelectorAll('.skill-progress-bar').forEach(bar => {
+
+        // Animate skill bars when they are in the viewport
+        skillBars.forEach(bar => {
             const barTop = bar.getBoundingClientRect().top;
-            if (barTop < windowHeight) {
-                const width = bar.dataset.width || 0;
+            const barVisible = 100; // Adjust as needed
+            if (barTop < windowHeight - barVisible) {
+                const width = bar.dataset.width;
                 bar.style.width = width + '%';
             }
         });
     };
-    
-    // Run once on load
-    revealOnScroll();
-    
-    // Add scroll event
+
     window.addEventListener('scroll', revealOnScroll);
-    
-    // Show gallery items when they come into view
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    
-    // Check visibility for gallery items
-    const checkGalleryVisibility = () => {
-        galleryItems.forEach((item, index) => {
-            const itemTop = item.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (itemTop < windowHeight - 100) {
-                // Stagger the animation
-                setTimeout(() => {
-                    item.classList.add('show');
-                }, index * 150);
-            }
-        });
-    };
-    
-    // Add scroll event for gallery items
-    window.addEventListener('scroll', checkGalleryVisibility);
-    // Run once on load
-    checkGalleryVisibility();
+    revealOnScroll(); // Call it once initially to reveal elements already in view
 }
 
-// Set up gallery filtering
+document.addEventListener('DOMContentLoaded', function() {
+   setupGalleryFilter();
+});
 function setupGalleryFilter() {
-    const filterButtons = document.querySelectorAll('[data-filter]');
+    const filterButtons = document.querySelectorAll('.gallery-filter .btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
-    
+    if (!filterButtons.length || !galleryItems.length) { return;}
+
     filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const filter = this.getAttribute('data-filter');
-            
-            // Remove active class from all buttons
+        button.addEventListener('click', () => {
+            const filterValue = button.dataset.filter;
             filterButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            // Filter gallery items
+            button.classList.add('active');
             galleryItems.forEach(item => {
-                const category = item.getAttribute('data-category');
-                
-                if (filter === 'all' || filter === category) {
+                const itemCategory = item.dataset.category;
+                if (filterValue === 'all' || itemCategory === filterValue) {
                     item.style.display = 'block';
-                    setTimeout(() => {
-                        item.classList.add('show');
-                    }, 50);
                 } else {
-                    item.classList.remove('show');
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
+                    item.style.display = 'none';
                 }
             });
         });
     });
 }
 
-// Set up pricing toggle between UAH and EUR
+
 function setupPricingToggle() {
-    const pricingToggle = document.getElementById('pricingToggle');
-    if (!pricingToggle) return;
-    
-    const uahPrices = document.querySelectorAll('.price-uah');
-    const eurPrices = document.querySelectorAll('.price-eur');
-    
-    pricingToggle.addEventListener('change', function() {
-        if (this.checked) {
-            // Show EUR prices
-            uahPrices.forEach(price => price.classList.add('d-none'));
-            eurPrices.forEach(price => price.classList.remove('d-none'));
+    const toggleSwitch = document.getElementById('pricing-toggle'); // The toggle switch (checkbox)
+    const monthlyPrices = document.querySelectorAll('.monthly-price'); // Elements showing monthly prices
+    const yearlyPrices = document.querySelectorAll('.yearly-price'); // Elements showing yearly prices
+
+    if (!toggleSwitch || !monthlyPrices.length || !yearlyPrices.length) {
+        return;
+    }
+
+    toggleSwitch.addEventListener('change', () => {
+        if (toggleSwitch.checked) {
+            // Show yearly prices, hide monthly prices
+            yearlyPrices.forEach(el => el.style.display = 'block');
+            monthlyPrices.forEach(el => el.style.display = 'none');
         } else {
-            // Show UAH prices
-            eurPrices.forEach(price => price.classList.add('d-none'));
-            uahPrices.forEach(price => price.classList.remove('d-none'));
+            // Show monthly prices, hide yearly prices
+            monthlyPrices.forEach(el => el.style.display = 'block');
+            yearlyPrices.forEach(el => el.style.display = 'none');
         }
+    });
+
+     // Set initial state based on checkbox (important for page load)
+     toggleSwitch.dispatchEvent(new Event('change'));
+}
+function setupFormHandlers() {
+    const forms = document.querySelectorAll('form'); // Select all forms
+
+    forms.forEach(form => {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const formData = new FormData(this); // 'this' refers to the form
+            const formProps = Object.fromEntries(formData);
+
+            // Basic validation (example: check for empty fields)
+            let isValid = true;
+            for (const key in formProps) {
+               if(formProps[key].trim() === ''){
+                    isValid = false;
+                    const inputField = this.querySelector(`[name="${key}"]`);
+                    inputField.classList.add('is-invalid'); // add red
+                    inputField.addEventListener('input', () => {
+                    inputField.classList.remove('is-invalid')
+                    });
+                }
+            }
+
+            if (!isValid) {
+                console.error('Form validation failed.');
+                return; // Stop processing if validation fails
+            }
+
+           // Simulate form submission (replace with your actual submission logic)
+          console.log('Form data:', formProps);
+            // Example using fetch (modern way to send data):
+            fetch(this.action, {  // this.action gets the form's action URL
+                method: this.method, // GET or POST from the form
+                body: formData,    // Send the form data
+                headers: {
+                    'Accept': 'application/json', // Expect JSON response (optional)
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json(); // Parse JSON response if successful
+                } else {
+                    throw new Error('Network response was not ok.'); // Handle errors
+                }
+            })
+            .then(data => {
+                // Handle successful submission (e.g., show a success message)
+                console.log('Success:', data);
+                form.reset(); // Clear the form
+                //Display success message using Bootstrap modal or alert:
+                const successMessage = document.createElement('div');
+                successMessage.classList.add('alert', 'alert-success');
+                successMessage.textContent = 'Форма успішно відправлена!';
+                form.parentNode.insertBefore(successMessage, form); // insert message above the form
+                // Remove after 3 seconds:
+                setTimeout(()=> {
+                successMessage.remove();
+                }, 3000)
+
+
+            })
+            .catch(error => {
+                // Handle errors (e.g., show an error message)
+                console.error('Error:', error);
+                 const errorMessage = document.createElement('div');
+                errorMessage.classList.add('alert', 'alert-danger');
+                errorMessage.textContent = 'Помилка відправки';
+                form.parentNode.insertBefore(errorMessage, form);
+                 setTimeout(()=> {
+                errorMessage.remove();
+                }, 3000)
+            });
+        });
     });
 }
 
-// Setup form handlers for modals and toasts
-function setupFormHandlers() {
-    // Course registration form handler
-    const submitCourseBtn = document.getElementById('submitCourseForm');
-    if (submitCourseBtn) {
-        submitCourseBtn.addEventListener('click', function() {
-            const courseModal = bootstrap.Modal.getInstance(document.getElementById('courseModal'));
-            courseModal.hide();
-            
-            // Show success toast
-            const toast = new bootstrap.Toast(document.getElementById('successToast'));
-            toast.show();
-            
-            // Reset form
-            document.getElementById('courseForm').reset();
-        });
-    }
-    
-    // Consultation form handler
-    const submitConsultBtn = document.getElementById('submitConsultForm');
-    if (submitConsultBtn) {
-        submitConsultBtn.addEventListener('click', function() {
-            const consultationModal = bootstrap.Modal.getInstance(document.getElementById('consultationModal'));
-            consultationModal.hide();
-            
-            // Show success toast
-            const toast = new bootstrap.Toast(document.getElementById('successToast'));
-            toast.show();
-            
-            // Reset form
-            document.getElementById('consultationForm').reset();
-        });
-    }
-    
-    // Set consultation type in modal when button is clicked
-    const consultationButtons = document.querySelectorAll('[data-bs-target="#consultationModal"]');
-    consultationButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const consultationType = this.getAttribute('data-consultation');
-            const selectElement = document.getElementById('consultationType');
-            
-            if (selectElement) {
-                // Find and select the appropriate option
-                Array.from(selectElement.options).forEach(option => {
-                    if (option.text === consultationType) {
-                        option.selected = true;
+
+
+function setupCounters() {
+    const counters = document.querySelectorAll('.counter');
+    if (!counters.length) return;
+
+    const options = {
+        threshold: 0.5, // Trigger when 50% of the element is visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = +counter.dataset.target; // '+' converts to number
+                const duration = 2000; // Animation duration in milliseconds
+                const increment = target / (duration / 16);  // ~60fps
+
+                let current = 0;
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current); // Display integer value
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target; // Ensure final value is correct
                     }
-                });
+                };
+
+                updateCounter();
+                observer.unobserve(counter); // Stop observing once animated
             }
         });
-    });
-    
-    // Add smooth hover effect to nav links
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px)';
-            this.style.transition = 'all 0.3s ease';
-        });
-        
-        link.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
+    }, options);
+
+    counters.forEach(counter => {
+        observer.observe(counter);
     });
 }
 
-// Add smooth scroll behavior for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-    </script>
+</script>
 </body>
 </html>
 </html>
