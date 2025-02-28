@@ -1,0 +1,2287 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Астрологічні консультації та курси від Наталії Індіго</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+:root {
+    --primary-color: #0d1b3a;
+    --secondary-color: #253a5e;
+    --accent-color: #e91e63;
+    --accent-light: #ff4081;
+    --accent-dark: #c2185b;
+    --text-light: #ffffff;
+    --text-dark: #212529;
+    --star-color: rgba(255, 255, 255, 0.8);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Animated Background */
+.bg-astro {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated Stars */
+.star-field {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background-color: var(--star-color);
+    border-radius: 50%;
+    animation: twinkle var(--duration) infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+.text-accent {
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+
+.text-accent:hover {
+    color: var(--accent-light);
+}
+
+/* Hero Section with Celestial Bodies */
+.hero-section {
+    min-height: 80vh;
+    background: linear-gradient(135deg, #0f2247 0%, #0a1224 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Schematic/Illustrated Moon */
+.moon {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    left: 8%;
+    top: 25%;
+    transform: translateY(-50%);
+    z-index: 1;
+    animation: float 8s infinite ease-in-out;
+    overflow: hidden;
+}
+
+.moon::before {
+    content: '';
+    position: absolute;
+    top: -15%;
+    right: -15%;
+    width: 80%;
+    height: 80%;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+}
+
+.moon::after {
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    width: 15%;
+    height: 15%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    box-shadow: 
+        40px -10px 0 rgba(255, 255, 255, 0.1),
+        25px 25px 0 rgba(255, 255, 255, 0.15),
+        -15px -25px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Schematic/Illustrated Sun */
+.sun {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: 8%;
+    top: 25%;
+    transform: translateY(-50%);
+    z-index: 1;
+    animation: pulse 6s infinite alternate;
+}
+
+.sun-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 204, 0, 0.7);
+    border-radius: 50%;
+}
+
+.sun-ray {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(255, 204, 0, 0.7);
+    height: 2px;
+    width: 40px;
+    transform-origin: 0 0;
+}
+
+/* Generate 12 rays */
+.sun-ray:nth-child(1) { transform: rotate(0deg) translateX(40px); }
+.sun-ray:nth-child(2) { transform: rotate(30deg) translateX(40px); }
+.sun-ray:nth-child(3) { transform: rotate(60deg) translateX(40px); }
+.sun-ray:nth-child(4) { transform: rotate(90deg) translateX(40px); }
+.sun-ray:nth-child(5) { transform: rotate(120deg) translateX(40px); }
+.sun-ray:nth-child(6) { transform: rotate(150deg) translateX(40px); }
+.sun-ray:nth-child(7) { transform: rotate(180deg) translateX(40px); }
+.sun-ray:nth-child(8) { transform: rotate(210deg) translateX(40px); }
+.sun-ray:nth-child(9) { transform: rotate(240deg) translateX(40px); }
+.sun-ray:nth-child(10) { transform: rotate(270deg) translateX(40px); }
+.sun-ray:nth-child(11) { transform: rotate(300deg) translateX(40px); }
+.sun-ray:nth-child(12) { transform: rotate(330deg) translateX(40px); }
+
+@keyframes float {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(-50%) translateX(15px); }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    100% { opacity: 0.8; }
+}
+
+.btn-accent {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    border: none;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-accent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    z-index: -1;
+    transition: all 0.4s ease;
+}
+
+.btn-accent:hover {
+    background-color: var(--accent-dark);
+    color: var(--text-light);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(233, 30, 99, 0.4);
+}
+
+.btn-accent:hover::before {
+    left: 100%;
+}
+
+.course-card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: none;
+    position: relative;
+    z-index: 1;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.about-section {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.about-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(135deg, rgba(200, 225, 255, 0.05) 0%, rgba(200, 225, 255, 0) 100%);
+    z-index: -1;
+}
+
+.nav-link {
+    position: relative;
+    padding: 10px 15px;
+    margin: 0 5px;
+    color: var(--text-light);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 80%;
+    left: 10%;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--accent-color);
+}
+
+.check-icon {
+    color: var(--accent-color);
+    margin-right: 10px;
+    transform: scale(0);
+    animation: popIn 0.3s forwards;
+}
+
+@keyframes popIn {
+    to { transform: scale(1); }
+}
+
+/* Gallery Styles */
+.gallery-container {
+    position: relative;
+}
+
+.gallery-item {
+    margin-bottom: 30px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.gallery-item.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.gallery-item img {
+    transition: all 0.5s ease;
+    width: 100%;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(13, 27, 58, 0.8);
+    color: white;
+    padding: 15px;
+    transform: translateY(100%);
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover .gallery-caption {
+    transform: translateY(0);
+}
+
+.price-feature {
+    color: var(--accent-color);
+    font-weight: 500;
+    font-size: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.price-feature::after {
+    content: '₴';
+    font-size: 1rem;
+    position: absolute;
+    top: 0;
+    right: -15px;
+}
+
+.price-eur::after {
+    content: '€';
+}
+
+.consultation-card {
+    transition: all 0.4s ease;
+    border-radius: 15px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    position: relative;
+}
+
+.consultation-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.consultation-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    padding: 20px;
+    color: var(--text-light);
+}
+
+/* Badge Styles */
+.feature-badge {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    transform: translateY(-50%);
+    background-color: var(--accent-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    z-index: 2;
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+}
+
+.popular-badge {
+    position: absolute;
+    top: 20px;
+    right: -30px;
+    transform: rotate(45deg);
+    background-color: var(--accent-color);
+    color: white;
+    padding: 8px 30px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    z-index: 2;
+}
+
+.level-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.level-beginner {
+    background-color: #4caf50;
+    color: white;
+}
+
+.level-intermediate {
+    background-color: #ff9800;
+    color: white;
+}
+
+.level-advanced {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Timeline Improvements */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: var(--accent-color);
+    left: 0;
+    opacity: 0.3;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+
+.timeline-item:before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    left: -37px;
+    top: 5px;
+}
+
+/* Improved Pricing Toggle */
+.pricing-toggle {
+    display: inline-block;
+    position: relative;
+    width: 60px;
+    height: 30px;
+    margin: 0 15px;
+}
+
+.pricing-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.pricing-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 30px;
+}
+
+.pricing-slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .pricing-slider {
+    background-color: var(--accent-color);
+}
+
+input:focus + .pricing-slider {
+    box-shadow: 0 0 1px var(--accent-color);
+}
+
+input:checked + .pricing-slider:before {
+    transform: translateX(30px);
+}
+
+/* Improved Contact Icons */
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(233, 30, 99, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    transform: translateY(-5px);
+}
+
+/* Improved Footer Design */
+.footer {
+    background-color: var(--primary-color);
+    position: relative;
+    overflow: hidden;
+    padding-top: 60px;
+}
+
+.constellation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.constellation-dot {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: white;
+    opacity: 0.4;
+}
+
+.constellation-line {
+    position: absolute;
+    height: 1px;
+    background-color: white;
+    opacity: 0.15;
+    transform-origin: 0 0;
+}
+
+/* Zodiac Illustrations */
+.zodiac-symbol {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    margin: 0 8px;
+    color: white;
+    font-size: 18px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.zodiac-symbol:hover {
+    transform: translateY(-5px);
+    opacity: 1;
+    background-color: rgba(233, 30, 99, 0.2);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* Scroll reveal classes */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease;
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s ease;
+}
+
+.reveal-left.active, .reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Stylish Form Elements */
+.form-control:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.25rem rgba(233, 30, 99, 0.25);
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: var(--accent-color);
+}
+
+/* Floating Star Elements */
+.floating-star {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.5);
+    animation: star-float 10s infinite ease-in-out;
+    z-index: 1;
+}
+
+@keyframes star-float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(10px, -15px) rotate(5deg); }
+    50% { transform: translate(20px, 0) rotate(0deg); }
+    75% { transform: translate(10px, 15px) rotate(-5deg); }
+}
+
+/* Schematic Planets */
+.planet {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.planet-venus {
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(255, 204, 153, 0.7);
+    left: 25%;
+    bottom: 15%;
+}
+
+.planet-mars {
+    width: 25px;
+    height: 25px;
+    border: 1px solid rgba(255, 102, 102, 0.7);
+    right: 20%;
+    bottom: 25%;
+}
+
+.planet-orbit {
+    position: absolute;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 200px;
+    height: 80px;
+    transform: translateX(-50%) translateY(-50%);
+    left: 50%;
+    top: 70%;
+}
+
+/* Gallery Filter Improvements */
+.gallery-filter .btn {
+    border-radius: 20px;
+    padding: 6px 15px;
+    font-size: 0.85rem;
+    margin-right: 5px;
+    transition: all 0.3s ease;
+}
+
+.gallery-filter .btn.active {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* Testimonial Improvements */
+.testimonial-card {
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    border-radius: 15px;
+}
+
+.testimonial-card::before {
+    content: '\201C';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 60px;
+    color: rgba(233, 30, 99, 0.1);
+    z-index: -1;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+/* Image hover overlay */
+.img-hover-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.img-hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(13, 27, 58, 0.8), transparent);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.img-hover-container:hover .img-hover-overlay {
+    opacity: 1;
+}
+
+/* Notification Badge */
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Feature Box Style */
+.feature-box {
+    padding: 25px;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(233, 30, 99, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    color: var(--accent-color);
+    font-size: 28px;
+    transition: all 0.3s ease;
+}
+
+.feature-box:hover .feature-icon {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Location Map */
+.location-map {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.location-map:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Social Links */
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    margin-right: 10px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .moon {
+        width: 120px;
+        height: 120px;
+        left: 5%;
+    }
+    
+    .sun {
+        width: 140px;
+        height: 140px;
+        right: 5%;
+    }
+    
+    .sun-circle {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .sun-ray {
+        width: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .moon {
+        width: 100px;
+        height: 100px;
+        top: 15%;
+    }
+    
+    .sun {
+        width: 120px;
+        height: 120px;
+        top: 15%;
+    }
+    
+    .sun-circle {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .sun-ray {
+        width: 25px;
+    }
+    
+    .feature-badge, .popular-badge {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section {
+        text-align: center;
+    }
+    
+    .moon {
+        left: -10px;
+        top: 15%;
+        width: 80px;
+        height: 80px;
+    }
+    
+    .sun {
+        right: -10px;
+        top: 15%;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .sun-circle {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .sun-ray {
+        width: 20px;
+    }
+    
+    .btn-accent {
+        display: block;
+        margin: 0 auto 10px;
+        max-width: 100%;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}	
+</style>
+</head>
+
+<body>
+    <!-- Star field background (created dynamically via JS) -->
+    <div id="starField" class="star-field"></div>
+    
+    <!-- Header -->
+    <header class="bg-astro sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container py-2">
+                <a class="navbar-brand" href="#">
+                    <span class="fw-bold fs-4">Наталія Індіго</span>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                    <div>
+                        <a href="tel:+380685115067" class="text-light text-decoration-none me-3">
+                            <i class="fas fa-phone-alt me-2"></i>(068) 211 50 67
+                        </a>
+                    </div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#about">Про автора</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#courses">Курси</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#consultations">Консультації</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#gallery">Галерея</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contacts">Контакти</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section d-flex align-items-center py-5">
+        <!-- CSS Moon and Sun -->
+<!-- Schematic Moon element -->
+<div class="moon"></div>
+
+<!-- Schematic Sun element -->
+<div class="sun">
+    <div class="sun-circle"></div>
+    <div class="sun-ray"></div>
+    <div class="sun-ray"></div>
+    <div class="sun-ray"></div>
+    <div class="sun-ray"></div>
+    <div class="sun-ray"></div>
+    <div class="sun-ray"></div>
+    <div class="sun-ray"></div>
+    <div class="sun-ray"></div>
+    <div class="sun-ray"></div>
+    <div class="sun-ray"></div>
+    <div class="sun-ray"></div>
+    <div class="sun-ray"></div>
+</div>
+        
+        <div class="container py-5">
+            <div class="row justify-content-center text-center py-5">
+                <div class="col-md-10 col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4 reveal text-white">АСТРОЛОГІЧНІ КОНСУЛЬТАЦІЇ<br>ТА КУРСИ<br>ВІД <span class="text-accent">НАТАЛІЇ ІНДІГО</span></h1>
+                    <p class="lead mb-5 reveal text-white">Відкрийте таємниці зірок та розкрийте свій потенціал через астрологію</p>
+                    <div class="reveal">
+                        <a href="#free-lesson" class="btn btn-accent btn-lg me-2 pulse-btn text-white">Хочу безкоштовний урок</a>
+                        <a href="#consultations" class="btn btn-outline-light btn-lg">Записатись на консультацію</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0 reveal-left">
+                    <div class="position-relative">
+                        <img src="https://placehold.co/600x800/0d1b3a/e91e63?text=Наталія+Індіго" alt="Наталія Індіго" class="img-fluid rounded-3 shadow">
+                        <div class="bg-white p-4 shadow rounded-3 position-absolute bottom-0 end-0 translate-middle-y" style="max-width: 80%;">
+                            <div class="mb-2">
+                                <span class="badge bg-astro px-3 py-2 rounded-pill">Експерт з астропсихології</span>
+                            </div>
+                            <h4 class="mb-0">Наталія Індіго</h4>
+                            <p class="text-muted mb-0">15+ років досвіду</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 reveal-right">
+                    <h2 class="fw-bold mb-4">Наталія Індіго</h2>
+                    <p class="fs-5 mb-3">Експерт з астропсихології та засновник Школи астрології "Сіріус"</p>
+                    <p class="mb-4">Мене звати Наталія Індіго, я астролог-дослідник і магістр психології з 15-річним досвідом консультування та навчання астрології. Моя місія — допомогти вам розширювати власний життєвий код, усвідомити свої сильні сторони, знайти відповіді на важливі питання й побачити шлях, який дійсно веде до вашої реалізації.</p>
+                    
+                    <div class="mb-4">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-graduation-cap fs-4 text-accent me-3"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Освіта</h5>
+                                        <p class="mb-0">Магістр психології, кваліфікований астролог</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-medal fs-4 text-accent me-3"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Досвід</h5>
+                                        <p class="mb-0">15+ років консультування і викладання</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="mb-4">Окрім особистих консультацій, я також навчаю астрології (очно та онлайн), ділюся своїм досвідом та знаннями на авторських курсах та інших цифрових ресурсах. При бажанні, ви можете знайти мої астрологічні прогнози, думки та спостереження перейшовши за посиланням на мій канал в Телеграм чи YouTube.</p>
+                    
+                    <!-- Progress bars for skills -->
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Натальна астрологія</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="95"></div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Прогностика</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="90"></div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Синастрії</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="85"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="#courses" class="btn btn-accent">Курси</a>
+                        <a href="#consultations" class="btn btn-outline-dark">Консультації</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Banner -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 reveal">
+                    <div class="p-4 bg-white shadow-sm rounded-3 text-center">
+                        <p class="mb-0 fs-5 fw-bold">Я пропоную індивідуальні консультації та очні курси з астрології у місті Вінниця, які допоможуть вам опанувати мистецтво астрологічного аналізу та прогнозування.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-5">
+        <div class="container py-5">
+            <div class="row mb-5 text-center">
+                <div class="col-12 reveal">
+                    <h2 class="fw-bold mb-3">ОЧНІ КУРСИ З АСТРОЛОГІЇ У МІСТІ ВІННИЦЯ</h2>
+                    <div class="divider-center mx-auto" style="width:80px; height:3px; background-color: var(--accent-color);"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4 reveal">
+                    <div class="card h-100 course-card">
+							<div class="card-header consultation-header text-center py-4">
+								<span class="level-badge level-beginner">Початківець</span>
+								<h3 class="card-title fw-bold mb-2">«Астрологія та самопізнання»</h3>
+								<p class="mb-0 text-light opacity-75">(курс для початківців)</p>
+							</div>
+                        <div class="card-body p-4">
+                            <div class="mb-4">
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="fw-bold">Старт:</span>
+                                            <span>8 квітня 2025</span>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="fw-bold">Тривалість:</span>
+                                            <span>20 занять</span>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="fw-bold">Графік:</span>
+                                            <span>вт і чт, 19:00 - 21:00</span>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="fw-bold">Вартість:</span>
+                                            <span>10 000 грн</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <h5 class="fw-bold mb-3">Для кого цей курс?</h5>
+                                <p>Курс ідеально підходить для тих, хто хоче з нуля вивчити астрологію та розібратися у своїй власній натальній карті.</p>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-3">Що ви отримаєте?</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2" data-delay="100"><i class="fas fa-check check-icon"></i>Повний розбір вашої натальної карти</li>
+                                    <li class="mb-2" data-delay="200"><i class="fas fa-check check-icon"></i>Знання з основ натальної астрології</li>
+                                    <li class="mb-2" data-delay="300"><i class="fas fa-check check-icon"></i>Аналіз життєвих сфер через систему домів</li>
+                                    <li class="mb-2" data-delay="400"><i class="fas fa-check check-icon"></i>Кармічні завдання та сценарії долі</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-0 p-4">
+                            <a href="#register" class="btn btn-accent w-100 interactive" data-bs-toggle="modal" data-bs-target="#courseModal">Записатися на курс</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 reveal" data-delay="200">
+                    <div class="card h-100 course-card">
+						<div class="card-header consultation-header text-center py-4">
+							<span class="level-badge level-intermediate">Середній рівень</span>
+							<h3 class="card-title fw-bold mb-2">«Прогностична астрологія»</h3>
+							<p class="mb-0 text-light opacity-75">(середній рівень)</p>
+						</div>
+                        <div class="card-body p-4">
+                            <div class="mb-4">
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="fw-bold">Старт:</span>
+                                            <span>15 квітня 2025</span>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="fw-bold">Тривалість:</span>
+                                            <span>15 занять</span>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="fw-bold">Графік:</span>
+                                            <span>пн і ср, 18:00 - 20:00</span>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="fw-bold">Вартість:</span>
+                                            <span>12 500 грн</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <h5 class="fw-bold mb-3">Для кого цей курс?</h5>
+                                <p>Для тих, хто вже знає основи астрології та хоче навчитися прогнозувати події.</p>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-3">Що ви отримаєте?</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2" data-delay="100"><i class="fas fa-check check-icon"></i>Техніки прогнозування подій</li>
+                                    <li class="mb-2" data-delay="200"><i class="fas fa-check check-icon"></i>Транзити та прогресії</li>
+                                    <li class="mb-2" data-delay="300"><i class="fas fa-check check-icon"></i>Обрання сприятливого часу (елективна астрологія)</li>
+                                    <li class="mb-2" data-delay="400"><i class="fas fa-check check-icon"></i>Синастрії та сумісність</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-0 p-4">
+                            <a href="#register" class="btn btn-accent w-100 interactive" data-bs-toggle="modal" data-bs-target="#courseModal">Записатися на курс</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4 mb-4 reveal" data-delay="400">
+                    <div class="card h-100 course-card">
+							<div class="card-header consultation-header text-center py-4">
+								<span class="level-badge level-advanced">Просунутий рівень</span>
+								<h3 class="card-title fw-bold mb-2">«Астрологія для професіоналів»</h3>
+								<p class="mb-0 text-light opacity-75">(просунутий рівень)</p>
+							</div>
+                        <div class="card-body p-4">
+                            <div class="mb-4">
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="fw-bold">Старт:</span>
+                                            <span>22 квітня 2025</span>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="fw-bold">Тривалість:</span>
+                                            <span>25 занять</span>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="fw-bold">Графік:</span>
+                                            <span>субота, 10:00 - 15:00</span>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="fw-bold">Вартість:</span>
+                                            <span>16 000 грн</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <h5 class="fw-bold mb-3">Для кого цей курс?</h5>
+                                <p>Для практикуючих астрологів, які хочуть поглибити свої знання та стати експертами.</p>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-3">Що ви отримаєте?</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2" data-delay="100"><i class="fas fa-check check-icon"></i>Просунуті техніки аналізу</li>
+                                    <li class="mb-2" data-delay="200"><i class="fas fa-check check-icon"></i>Бізнес-астрологія</li>
+                                    <li class="mb-2" data-delay="300"><i class="fas fa-check check-icon"></i>Медична астрологія</li>
+                                    <li class="mb-2" data-delay="400"><i class="fas fa-check check-icon"></i>Сертифікат від школи "Сіріус"</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-0 p-4">
+                            <a href="#register" class="btn btn-accent w-100 interactive" data-bs-toggle="modal" data-bs-target="#courseModal">Записатися на курс</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Lesson CTA -->
+    <section id="free-lesson" class="py-5 bg-astro">
+        <div class="container py-4">
+            <div class="row justify-content-center text-center text-light">
+                <div class="col-lg-8 reveal">
+                    <h2 class="fw-bold mb-4">Хочете спробувати перед тим, як записатися?</h2>
+                    <p class="lead mb-4">Залиште свої контактні дані та отримайте безкоштовний вступний урок з основ астрології</p>
+                    <form class="row g-3 justify-content-center">
+                        <div class="col-md-5">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="nameInput" placeholder="Ваше ім'я">
+                                <label for="nameInput">Ваше ім'я</label>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control" id="phoneInput" placeholder="Ваш телефон">
+                                <label for="phoneInput">Ваш телефон</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-accent btn-lg w-100 h-100 pulse-btn">Отримати</button>
+                        </div>
+                    </form>
+                    
+                    <!-- Floating zodiac symbols -->
+                    <div class="mt-5 position-relative" style="height: 50px;">
+                        <i class="fas fa-moon floating text-light opacity-50" style="position: absolute; left: 10%; font-size: 24px; animation-delay: 0s;"></i>
+                        <i class="fas fa-sun floating text-light opacity-50" style="position: absolute; left: 25%; font-size: 30px; animation-delay: 0.5s;"></i>
+                        <i class="fas fa-star floating text-light opacity-50" style="position: absolute; left: 40%; font-size: 20px; animation-delay: 1s;"></i>
+                        <i class="fas fa-meteor floating text-light opacity-50" style="position: absolute; left: 55%; font-size: 28px; animation-delay: 1.5s;"></i>
+                        <i class="fas fa-star floating text-light opacity-50" style="position: absolute; left: 70%; font-size: 22px; animation-delay: 2s;"></i>
+                        <i class="fas fa-moon floating text-light opacity-50" style="position: absolute; left: 85%; font-size: 26px; animation-delay: 2.5s;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultations Section -->
+    <section id="consultations" class="py-5">
+        <div class="container py-5">
+            <div class="row mb-5 text-center">
+                <div class="col-12 reveal">
+                    <h2 class="fw-bold mb-3">ІНДИВІДУАЛЬНІ КОНСУЛЬТАЦІЇ</h2>
+                    <div class="divider-center mx-auto" style="width:80px; height:3px; background-color: var(--accent-color);"></div>
+                    
+                    <!-- Pricing Toggle -->
+                    <div class="mt-4 d-flex align-items-center justify-content-center">
+                        <span>Гривні</span>
+                        <label class="pricing-toggle mx-3">
+                            <input type="checkbox" id="pricingToggle">
+                            <span class="pricing-slider"></span>
+                        </label>
+                        <span>Євро</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Consultation Pricing Cards -->
+            <div class="row">
+                <!-- Personal Consultation -->
+                <div class="col-md-6 col-lg-3 mb-4 reveal" data-delay="100">
+                    <div class="consultation-card">
+                        <div class="consultation-header text-center p-4">
+                            <h3 class="fw-bold mb-2">Особиста консультація</h3>
+                            <p class="mb-3 opacity-75">До 1,5 годин, обговорення будь-яких питань</p>
+                            <div class="price-feature mb-0">
+                                <span class="price-uah">2500</span>
+                                <span class="price-eur d-none">100</span>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2" data-delay="100"><i class="fas fa-check check-icon"></i>Детальний аналіз вашої особистості</li>
+                                <li class="mb-2" data-delay="200"><i class="fas fa-check check-icon"></i>Таланти та схильності</li>
+                                <li class="mb-2" data-delay="300"><i class="fas fa-check check-icon"></i>Життєве призначення</li>
+                                <li class="mb-2" data-delay="400"><i class="fas fa-check check-icon"></i>Рекомендації для розвитку</li>
+                                <li class="mb-2" data-delay="500"><i class="fas fa-check check-icon"></i>Запис консультації</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-white border-0 p-4">
+                            <a href="#consultation" class="btn btn-accent w-100 interactive" data-bs-toggle="modal" data-bs-target="#consultationModal" data-consultation="Особиста консультація">Замовити консультацію</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Express Consultation -->
+                <div class="col-md-6 col-lg-3 mb-4 reveal" data-delay="200">
+                    <div class="consultation-card">
+                        <div class="consultation-header text-center p-4">
+                            <h3 class="fw-bold mb-2">Експрес-консультація</h3>
+                            <p class="mb-3 opacity-75">Одне питання, письмовий аналіз на А4</p>
+                            <div class="price-feature mb-0">
+                                <span class="price-uah">1250</span>
+                                <span class="price-eur d-none">50</span>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2" data-delay="100"><i class="fas fa-check check-icon"></i>Фокус на одному питанні</li>
+                                <li class="mb-2" data-delay="200"><i class="fas fa-check check-icon"></i>Письмовий формат</li>
+                                <li class="mb-2" data-delay="300"><i class="fas fa-check check-icon"></i>Стислий і точний аналіз</li>
+                                <li class="mb-2" data-delay="400"><i class="fas fa-check check-icon"></i>Практичні рекомендації</li>
+                                <li class="mb-2" data-delay="500"><i class="fas fa-check check-icon"></i>Швидкий термін виконання</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-white border-0 p-4">
+                            <a href="#consultation" class="btn btn-accent w-100 interactive" data-bs-toggle="modal" data-bs-target="#consultationModal" data-consultation="Експрес-консультація">Замовити консультацію</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Career Consultation -->
+                <div class="col-md-6 col-lg-3 mb-4 reveal" data-delay="300">
+                    <div class="consultation-card">
+                        <div class="consultation-header text-center p-4">
+                            <h3 class="fw-bold mb-2">Консультація з профорієнтації</h3>
+                            <p class="mb-3 opacity-75">Аналіз талантів та потенціалу, письмовий звіт</p>
+                            <div class="price-feature mb-0">
+                                <span class="price-uah">1250</span>
+                                <span class="price-eur d-none">50</span>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2" data-delay="100"><i class="fas fa-check check-icon"></i>Виявлення природних здібностей</li>
+                                <li class="mb-2" data-delay="200"><i class="fas fa-check check-icon"></i>Направлення професійного розвитку</li>
+                                <li class="mb-2" data-delay="300"><i class="fas fa-check check-icon"></i>Аналіз сильних сторін</li>
+                                <li class="mb-2" data-delay="400"><i class="fas fa-check check-icon"></i>Ідентифікація перспективних сфер</li>
+                                <li class="mb-2" data-delay="500"><i class="fas fa-check check-icon"></i>Стратегія кар'єрного зростання</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-white border-0 p-4">
+                            <a href="#consultation" class="btn btn-accent w-100 interactive" data-bs-toggle="modal" data-bs-target="#consultationModal" data-consultation="Консультація з профорієнтації">Замовити консультацію</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Year Forecast -->
+                <div class="col-md-6 col-lg-3 mb-4 reveal" data-delay="400">
+                    <div class="consultation-card">
+						<span class="popular-badge">Популярно</span>
+						<div class="consultation-header text-center p-4">
+							<h3 class="fw-bold mb-2">Прогноз на рік</h3>
+							<p class="mb-3 opacity-75">Детальний, помісячний</p>
+							<div class="price-feature mb-0">
+								<span class="price-uah">5000</span>
+								<span class="price-eur d-none">200</span>
+							</div>
+						</div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2" data-delay="100"><i class="fas fa-check check-icon"></i>Детальний помісячний аналіз</li>
+                                <li class="mb-2" data-delay="200"><i class="fas fa-check check-icon"></i>Ключові періоди для всіх сфер життя</li>
+                                <li class="mb-2" data-delay="300"><i class="fas fa-check check-icon"></i>Прогнози щодо кар'єри, фінансів</li>
+                                <li class="mb-2" data-delay="400"><i class="fas fa-check check-icon"></i>Аналіз особистих відносин</li>
+                                <li class="mb-2" data-delay="500"><i class="fas fa-check check-icon"></i>Рекомендації для кожного місяця</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-white border-0 p-4">
+                            <a href="#consultation" class="btn btn-accent w-100 interactive" data-bs-toggle="modal" data-bs-target="#consultationModal" data-consultation="Прогноз на рік (детальний)">Замовити консультацію</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- General Year Forecast -->
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4 mb-4 reveal" data-delay="500">
+                    <div class="consultation-card">
+                        <div class="consultation-header text-center p-4">
+                            <h3 class="fw-bold mb-2">Прогноз на рік</h3>
+                            <p class="mb-3 opacity-75">Загальний</p>
+                            <div class="price-feature mb-0">
+                                <span class="price-uah">2500</span>
+                                <span class="price-eur d-none">100</span>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2" data-delay="100"><i class="fas fa-check check-icon"></i>Загальні тенденції року</li>
+                                <li class="mb-2" data-delay="200"><i class="fas fa-check check-icon"></i>Ключові події та періоди</li>
+                                <li class="mb-2" data-delay="300"><i class="fas fa-check check-icon"></i>Особистісний розвиток</li>
+                                <li class="mb-2" data-delay="400"><i class="fas fa-check check-icon"></i>Основні сфери фокусу</li>
+                                <li class="mb-2" data-delay="500"><i class="fas fa-check check-icon"></i>Поради щодо використання можливостей</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-white border-0 p-4">
+                            <a href="#consultation" class="btn btn-accent w-100 interactive" data-bs-toggle="modal" data-bs-target="#consultationModal" data-consultation="Прогноз на рік (загальний)">Замовити консультацію</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row mb-5 text-center">
+                <div class="col-12 reveal">
+                    <h2 class="fw-bold mb-3">ГАЛЕРЕЯ</h2>
+                    <div class="divider-center mx-auto" style="width:80px; height:3px; background-color: var(--accent-color);"></div>
+                    <p class="mt-4">Моменти з курсів, консультацій та астрологічних заходів</p>
+                </div>
+            </div>
+            
+            <!-- Gallery Filter -->
+            <div class="row mb-4 justify-content-center">
+                <div class="col-auto">
+                    <div class="gallery-filter d-flex">
+                        <button class="btn btn-sm btn-outline-dark me-2 active" data-filter="all">Всі</button>
+                        <button class="btn btn-sm btn-outline-dark me-2" data-filter="courses">Курси</button>
+                        <button class="btn btn-sm btn-outline-dark me-2" data-filter="consultations">Консультації</button>
+                        <button class="btn btn-sm btn-outline-dark" data-filter="events">Заходи</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row gallery-container">
+                <!-- Gallery Item 1 -->
+                <div class="col-md-6 col-lg-4 gallery-item" data-category="courses">
+                    <div class="img-hover-container">
+                        <img src="https://placehold.co/600x400/0d1b3a/e91e63?text=Курс+астрології" class="img-fluid" alt="Курс астрології">
+                        <div class="img-hover-overlay">
+                            <div>
+                                <h5 class="text-white mb-2">Курс для початківців</h5>
+                                <p class="mb-0 text-white-50">Перше заняття групи 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="col-md-6 col-lg-4 gallery-item" data-category="consultations">
+                    <div class="img-hover-container">
+                        <img src="https://placehold.co/600x400/1a2a4a/e91e63?text=Консультація" class="img-fluid" alt="Консультація">
+                        <div class="img-hover-overlay">
+                            <div>
+                                <h5 class="text-white mb-2">Індивідуальний підхід</h5>
+                                <p class="mb-0 text-white-50">Робочий процес</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="col-md-6 col-lg-4 gallery-item" data-category="events">
+                    <div class="img-hover-container">
+                        <img src="https://placehold.co/600x400/2a3a5a/e91e63?text=Астрологічний+семінар" class="img-fluid" alt="Астрологічний семінар">
+                        <div class="img-hover-overlay">
+                            <div>
+                                <h5 class="text-white mb-2">Щорічний семінар</h5>
+                                <p class="mb-0 text-white-50">Вінниця, 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="col-md-6 col-lg-4 gallery-item" data-category="courses">
+                    <div class="img-hover-container">
+                        <img src="https://placehold.co/600x400/0d1b3a/e91e63?text=Практичне+заняття" class="img-fluid" alt="Практичне заняття">
+                        <div class="img-hover-overlay">
+                            <div>
+                                <h5 class="text-white mb-2">Робота з картами</h5>
+                                <p class="mb-0 text-white-50">Практичне заняття</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="col-md-6 col-lg-4 gallery-item" data-category="events">
+                    <div class="img-hover-container">
+                        <img src="https://placehold.co/600x400/2a3a5a/e91e63?text=Конференція" class="img-fluid" alt="Конференція астрологів">
+                        <div class="img-hover-overlay">
+                            <div>
+                                <h5 class="text-white mb-2">Міжнародна конференція</h5>
+                                <p class="mb-0 text-white-50">Київ, 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="col-md-6 col-lg-4 gallery-item" data-category="consultations">
+                    <div class="img-hover-container">
+                        <img src="https://placehold.co/600x400/1a2a4a/e91e63?text=Онлайн+консультація" class="img-fluid" alt="Онлайн консультація">
+                        <div class="img-hover-overlay">
+                            <div>
+                                <h5 class="text-white mb-2">Онлайн формат</h5>
+                                <p class="mb-0 text-white-50">Дистанційні консультації</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row mb-5 text-center">
+                <div class="col-12 reveal">
+                    <h2 class="fw-bold mb-3">ВІДГУКИ КЛІЄНТІВ</h2>
+                    <div class="divider-center mx-auto" style="width:80px; height:3px; background-color: var(--accent-color);"></div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="testimonial-carousel">
+                        <div class="row">
+                            <div class="col-md-4 mb-4 reveal" data-delay="100">
+                                <div class="card testimonial-card h-100 p-4 border-0 shadow-sm">
+                                    <div class="mb-3 text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="card-text mb-4">«Консультація у Наталії повністю змінила моє розуміння себе. Я нарешті зрозуміла причини багатьох своїх вчинків та прийняла важливі рішення. Дуже рекомендую!»</p>
+                                    <div class="d-flex align-items-center mt-auto">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-astro rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                                <span class="text-white fw-bold">КО</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5 class="mb-0">Катерина Олійник</h5>
+                                            <p class="mb-0 text-muted">Вінниця</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4 reveal" data-delay="200">
+                                <div class="card testimonial-card h-100 p-4 border-0 shadow-sm">
+                                    <div class="mb-3 text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="card-text mb-4">«Курс "Астрологія для початківців" перевершив усі мої очікування. Наталія - чудовий педагог, який доступно пояснює навіть складні речі. Тепер я можу самостійно працювати зі своєю картою!»</p>
+                                    <div class="d-flex align-items-center mt-auto">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-astro rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                                <span class="text-white fw-bold">МР</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5 class="mb-0">Михайло Романенко</h5>
+                                            <p class="mb-0 text-muted">Київ</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4 reveal" data-delay="300">
+                                <div class="card testimonial-card h-100 p-4 border-0 shadow-sm">
+                                    <div class="mb-3 text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="card-text mb-4">«Замовляла прогноз на рік і була приємно вражена точністю та детальністю. Наталія змогла передбачити багато важливих моментів мого життя і дала цінні поради, які дійсно працюють.»</p>
+                                    <div class="d-flex align-items-center mt-auto">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-astro rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                                <span class="text-white fw-bold">ОП</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5 class="mb-0">Олена Петренко</h5>
+                                            <p class="mb-0 text-muted">Одеса</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacts" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row mb-5 text-center">
+                <div class="col-12 reveal">
+                    <h2 class="fw-bold mb-3">КОНТАКТИ</h2>
+                    <div class="divider-center mx-auto" style="width:80px; height:3px; background-color: var(--accent-color);"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 mb-4 mb-lg-0 reveal-left">
+                    <h3 class="mb-4">Зв'яжіться зі мною</h3>
+                    <p class="mb-4">Маєте запитання щодо консультацій чи курсів? Залиште повідомлення, і я відповім вам якнайшвидше.</p>
+                    
+                    <form>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="contactName" placeholder="Ваше ім'я">
+                            <label for="contactName">Ваше ім'я</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="contactEmail" placeholder="Email">
+                            <label for="contactEmail">Email</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="tel" class="form-control" id="contactPhone" placeholder="Телефон">
+                            <label for="contactPhone">Телефон</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="contactTopic">
+                                <option selected disabled>Оберіть тему</option>
+                                <option value="courses">Курси</option>
+                                <option value="consultations">Консультації</option>
+                                <option value="other">Інше питання</option>
+                            </select>
+                            <label for="contactTopic">Тема</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" id="contactMessage" placeholder="Повідомлення" style="height: 150px"></textarea>
+                            <label for="contactMessage">Повідомлення</label>
+                        </div>
+                        <button type="submit" class="btn btn-accent">Надіслати повідомлення</button>
+                    </form>
+                </div>
+                <div class="col-lg-7 reveal-right">
+                    <div class="row mb-4">
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="contact-item text-center">
+                                <div class="contact-icon mx-auto">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <h5 class="mb-2">Адреса</h5>
+                                <p class="mb-0">м. Вінниця, вул. Соборна, 85</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="contact-item text-center">
+                                <div class="contact-icon mx-auto">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <h5 class="mb-2">Телефон</h5>
+                                <p class="mb-0"><a href="tel:+380685115067" class="text-dark">(068) 211 50 67</a></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="contact-item text-center">
+                                <div class="contact-icon mx-auto">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <h5 class="mb-2">Email</h5>
+                                <p class="mb-0"><a href="mailto:natalia@indigo-astro.com" class="text-dark">natalia@indigo-astro.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="location-map mt-4">
+                        <img src="https://placehold.co/1200x600/e9ecef/e91e63?text=Карта+розташування+офісу" alt="Карта розташування" class="img-fluid rounded-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5 text-light">
+        <div class="constellation" id="footerConstellation"></div>
+        <div class="container py-3">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h4 class="mb-4">Наталія Індіго</h4>
+                    <p class="mb-4">Експерт з астропсихології та засновник Школи астрології "Сіріус". Проводжу консультації та навчаю астрології очно у місті Вінниця та онлайн.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-light me-3 fs-5"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-light me-3 fs-5"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light me-3 fs-5"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="text-light me-3 fs-5"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-4 mb-lg-0">
+                    <h5 class="mb-4">Швидкі посилання</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><a href="#about" class="text-light text-decoration-none">Про автора</a></li>
+                        <li class="mb-3"><a href="#courses" class="text-light text-decoration-none">Курси</a></li>
+                        <li class="mb-3"><a href="#consultations" class="text-light text-decoration-none">Консультації</a></li>
+                        <li class="mb-3"><a href="#gallery" class="text-light text-decoration-none">Галерея</a></li>
+                        <li class="mb-3"><a href="#contacts" class="text-light text-decoration-none">Контакти</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4 mb-lg-0">
+                    <h5 class="mb-4">Години роботи</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2 d-flex justify-content-between">
+                            <span>Понеділок - П'ятниця:</span>
+                            <span>9:00 - 19:00</span>
+                        </li>
+                        <li class="mb-2 d-flex justify-content-between">
+                            <span>Понеділок - П'ятниця:</span>
+                            <span>9:00 - 19:00</span>
+                        </li>
+                        <li class="mb-2 d-flex justify-content-between">
+                            <span>Субота:</span>
+                            <span>10:00 - 16:00</span>
+                        </li>
+                        <li class="mb-2 d-flex justify-content-between">
+                            <span>Неділя:</span>
+                            <span>Вихідний</span>
+                        </li>
+                    </ul>
+                    <p class="mt-3 mb-0"><small>* За попереднім записом</small></p>
+                </div>
+                <div class="col-lg-3">
+                    <h5 class="mb-4">Підпишіться на новини</h5>
+                    <p class="mb-3">Отримуйте актуальні прогнози та анонси курсів</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Ваш email">
+                            <button class="btn btn-accent" type="submit">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-light opacity-25">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0">© 2025 Наталія Індіго. Всі права захищені.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0"><small>Останнє оновлення: 28.02.2025</small></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Course Registration Modal -->
+    <div class="modal fade" id="courseModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-astro text-light">
+                    <h5 class="modal-title">Запис на курс</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="courseForm">
+                        <div class="mb-3">
+                            <label for="courseName" class="form-label">Оберіть курс</label>
+                            <select class="form-select" id="courseName">
+                                <option value="beginners">«Астрологія та самопізнання» (для початківців)</option>
+                                <option value="forecast">«Прогностична астрологія» (середній рівень)</option>
+                                <option value="professional">«Астрологія для професіоналів» (просунутий рівень)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">ПІБ</label>
+                            <input type="text" class="form-control" id="fullName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Телефон</label>
+                            <input type="tel" class="form-control" id="phone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="birthData" class="form-label">Дата та час народження (за наявності)</label>
+                            <input type="text" class="form-control" id="birthData">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Додаткова інформація</label>
+                            <textarea class="form-control" id="message" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
+                    <button type="button" class="btn btn-accent" id="submitCourseForm">Записатися</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Consultation Modal -->
+    <div class="modal fade" id="consultationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-astro text-light">
+                    <h5 class="modal-title">Запис на консультацію</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="consultationForm">
+                        <div class="mb-3">
+                            <label for="consultationType" class="form-label">Тип консультації</label>
+                            <select class="form-select" id="consultationType">
+                                <option value="personal">Особиста консультація</option>
+                                <option value="express">Експрес-консультація</option>
+                                <option value="career">Консультація з профорієнтації</option>
+                                <option value="yearDetail">Прогноз на рік (детальний)</option>
+                                <option value="yearGeneral">Прогноз на рік (загальний)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="consultName" class="form-label">ПІБ</label>
+                            <input type="text" class="form-control" id="consultName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="consultPhone" class="form-label">Телефон</label>
+                            <input type="tel" class="form-control" id="consultPhone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="consultEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="consultEmail">
+                        </div>
+                        <div class="mb-3">
+                            <label for="consultBirthData" class="form-label">Дата, час та місце народження</label>
+                            <input type="text" class="form-control" id="consultBirthData">
+                        </div>
+                        <div class="mb-3">
+                            <label for="consultQuestion" class="form-label">Ваше запитання</label>
+                            <textarea class="form-control" id="consultQuestion" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
+                    <button type="button" class="btn btn-accent" id="submitConsultForm">Замовити</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Notification Toast -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success text-white">
+                <strong class="me-auto">Успіх!</strong>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Ваша заявка успішно відправлена. Ми зв'яжемося з вами найближчим часом.
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    createStars();
+    createConstellations();
+    initializeAnimations();
+    setupGalleryFilter();
+    setupPricingToggle();
+    setupFormHandlers();
+    
+    // Add current date to the footer
+    const currentDate = new Date('2025-02-28 06:43:33');
+    const formattedDate = currentDate.toLocaleDateString('uk-UA', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+    
+    const dateElements = document.querySelectorAll('[data-current-date]');
+    dateElements.forEach(element => {
+        element.textContent = formattedDate;
+    });
+    
+    // Add current user if logged in
+    const currentUser = 'heisssen';
+    const userElements = document.querySelectorAll('[data-current-user]');
+    userElements.forEach(element => {
+        if (currentUser) {
+            element.textContent = `Вітаємо, ${currentUser}!`;
+            element.classList.remove('d-none');
+        }
+    });
+});
+
+// Create stars for the starfield background
+function createStars() {
+    const starField = document.getElementById('starField');
+    if (!starField) return;
+    
+    const starsCount = 150;
+    
+    for (let i = 0; i < starsCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        
+        // Random position
+        const posX = Math.floor(Math.random() * 100);
+        const posY = Math.floor(Math.random() * 100);
+        
+        // Random size
+        const size = Math.random() * 3;
+        
+        // Random animation duration
+        const duration = 2 + Math.random() * 3;
+        
+        star.style.left = posX + '%';
+        star.style.top = posY + '%';
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        star.style.setProperty('--duration', duration + 's');
+        
+        starField.appendChild(star);
+    }
+}
+
+// Create constellation for footer background
+function createConstellations() {
+    const constellation = document.getElementById('footerConstellation');
+    if (!constellation) return;
+    
+    const dotsCount = 50;
+    const linesCount = 20;
+    const dots = [];
+    
+    // Create dots
+    for (let i = 0; i < dotsCount; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('constellation-dot');
+        
+        // Random position
+        const posX = Math.floor(Math.random() * 100);
+        const posY = Math.floor(Math.random() * 100);
+        
+        dot.style.left = posX + '%';
+        dot.style.top = posY + '%';
+        
+        constellation.appendChild(dot);
+        dots.push({ x: posX, y: posY, element: dot });
+    }
+    
+    // Create lines between random dots
+    for (let i = 0; i < linesCount; i++) {
+        const dot1 = dots[Math.floor(Math.random() * dots.length)];
+        const dot2 = dots[Math.floor(Math.random() * dots.length)];
+        
+        if (dot1 === dot2) continue;
+        
+        const line = document.createElement('div');
+        line.classList.add('constellation-line');
+        
+        // Calculate line properties
+        const dx = dot2.x - dot1.x;
+        const dy = dot2.y - dot1.y;
+        const length = Math.sqrt(dx * dx + dy * dy);
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        
+        line.style.width = length + '%';
+        line.style.left = dot1.x + '%';
+        line.style.top = dot1.y + '%';
+        line.style.transform = `rotate(${angle}deg)`;
+        
+        constellation.appendChild(line);
+    }
+}
+
+// Initialize scroll reveal animations
+function initializeAnimations() {
+    // Reveal elements on scroll
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    
+    const revealOnScroll = () => {
+        const windowHeight = window.innerHeight;
+        
+        revealElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            
+            if (elementTop < windowHeight - elementVisible) {
+                // Add delay if specified
+                const delay = element.dataset.delay || 0;
+                setTimeout(() => {
+                    element.classList.add('active');
+                }, delay);
+            }
+        });
+        
+        // Animate check icons
+        document.querySelectorAll('.check-icon').forEach(icon => {
+            const iconTop = icon.getBoundingClientRect().top;
+            if (iconTop < windowHeight) {
+                const delay = icon.parentElement.dataset.delay || 0;
+                setTimeout(() => {
+                    icon.style.animationDelay = delay + 'ms';
+                    icon.style.animationPlayState = 'running';
+                }, delay);
+            }
+        });
+        
+        // Animate skill progress bars
+        document.querySelectorAll('.skill-progress-bar').forEach(bar => {
+            const barTop = bar.getBoundingClientRect().top;
+            if (barTop < windowHeight) {
+                const width = bar.dataset.width || 0;
+                bar.style.width = width + '%';
+            }
+        });
+    };
+    
+    // Run once on load
+    revealOnScroll();
+    
+    // Add scroll event
+    window.addEventListener('scroll', revealOnScroll);
+    
+    // Show gallery items when they come into view
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    // Check visibility for gallery items
+    const checkGalleryVisibility = () => {
+        galleryItems.forEach((item, index) => {
+            const itemTop = item.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (itemTop < windowHeight - 100) {
+                // Stagger the animation
+                setTimeout(() => {
+                    item.classList.add('show');
+                }, index * 150);
+            }
+        });
+    };
+    
+    // Add scroll event for gallery items
+    window.addEventListener('scroll', checkGalleryVisibility);
+    // Run once on load
+    checkGalleryVisibility();
+}
+
+// Set up gallery filtering
+function setupGalleryFilter() {
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Filter gallery items
+            galleryItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+                
+                if (filter === 'all' || filter === category) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.classList.add('show');
+                    }, 50);
+                } else {
+                    item.classList.remove('show');
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+}
+
+// Set up pricing toggle between UAH and EUR
+function setupPricingToggle() {
+    const pricingToggle = document.getElementById('pricingToggle');
+    if (!pricingToggle) return;
+    
+    const uahPrices = document.querySelectorAll('.price-uah');
+    const eurPrices = document.querySelectorAll('.price-eur');
+    
+    pricingToggle.addEventListener('change', function() {
+        if (this.checked) {
+            // Show EUR prices
+            uahPrices.forEach(price => price.classList.add('d-none'));
+            eurPrices.forEach(price => price.classList.remove('d-none'));
+        } else {
+            // Show UAH prices
+            eurPrices.forEach(price => price.classList.add('d-none'));
+            uahPrices.forEach(price => price.classList.remove('d-none'));
+        }
+    });
+}
+
+// Setup form handlers for modals and toasts
+function setupFormHandlers() {
+    // Course registration form handler
+    const submitCourseBtn = document.getElementById('submitCourseForm');
+    if (submitCourseBtn) {
+        submitCourseBtn.addEventListener('click', function() {
+            const courseModal = bootstrap.Modal.getInstance(document.getElementById('courseModal'));
+            courseModal.hide();
+            
+            // Show success toast
+            const toast = new bootstrap.Toast(document.getElementById('successToast'));
+            toast.show();
+            
+            // Reset form
+            document.getElementById('courseForm').reset();
+        });
+    }
+    
+    // Consultation form handler
+    const submitConsultBtn = document.getElementById('submitConsultForm');
+    if (submitConsultBtn) {
+        submitConsultBtn.addEventListener('click', function() {
+            const consultationModal = bootstrap.Modal.getInstance(document.getElementById('consultationModal'));
+            consultationModal.hide();
+            
+            // Show success toast
+            const toast = new bootstrap.Toast(document.getElementById('successToast'));
+            toast.show();
+            
+            // Reset form
+            document.getElementById('consultationForm').reset();
+        });
+    }
+    
+    // Set consultation type in modal when button is clicked
+    const consultationButtons = document.querySelectorAll('[data-bs-target="#consultationModal"]');
+    consultationButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const consultationType = this.getAttribute('data-consultation');
+            const selectElement = document.getElementById('consultationType');
+            
+            if (selectElement) {
+                // Find and select the appropriate option
+                Array.from(selectElement.options).forEach(option => {
+                    if (option.text === consultationType) {
+                        option.selected = true;
+                    }
+                });
+            }
+        });
+    });
+    
+    // Add smooth hover effect to nav links
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px)';
+            this.style.transition = 'all 0.3s ease';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+}
+
+// Add smooth scroll behavior for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+    </script>
+</body>
+</html>
+</html>
